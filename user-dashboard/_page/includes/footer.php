@@ -116,7 +116,7 @@
 
 
 	</div> -->
-	
+	 <!-- recieve modal  -->
     <div class="modal fade" id="recieve">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -146,10 +146,34 @@
 	  </div>
 	  <!-- /.modal-dialog -->
   </div>
+ <!-- end of recieve modal  -->
+
+<!-- send modal  -->
+<div class="modal fade" id="send">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title">SEND COIN</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+		  </div>
+		  <div class="modal-body">
+            <a href="bitcoin?send" class="btn btn-light"> BITCOIN COIN </a>
+            <a href="etheruem?send" class="btn btn-light"> ETHERUEN COIN </a>
+            <a href="tron?send" class="btn btn-light"> TRON COIN </a>
+            <a href="usdt_erc?send" class="btn btn-light"> USDT(ERC20) COIN </a>
+            <a href="usdt_trc?send" class="btn btn-light"> USDT(TRC20) COIN </a>
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+  </div>
+<!-- end of sending modal  -->
 
 	<!-- Page Content overlay -->
 	  <!-- Modal -->
-  <div class="modal center-modal fade  modal-sticky" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal center-modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -174,6 +198,9 @@
 		</div>
 	  </div>
 	</div>
+
+    
+
   <!-- /.modal -->
   <script type="text/javascript">
 	(function(w,d,v3){

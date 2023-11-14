@@ -4,7 +4,7 @@ $get = file_get_contents($url);
 $prices = json_decode($get, true);
 
 $defaultPrices = [
-    'bitcoin' => 50000, // Replace with a default price for Bitcoin
+    'bitcoin' => 36000, // Replace with a default price for Bitcoin
     'ethereum' => 2000, // Replace with a default price for Ethereum
     'ripple' => 1.5,    // Replace with a default price for Ripple
     'trx' => 0.1,       // Replace with a default price for TRON
@@ -23,12 +23,45 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 
 
 <?php include_once('includes/topbar.php') ?>
-  
+  <!-- <script>
+	$(document).ready(function(){
+		(
+			setInterval(function() => {
+				$("#autoload").load('$prices');
+				refresh();
+			}, 1000);
+		)
+	})
+  </script> -->
+  <script>
+    $(document).ready(function() {
+        setInterval(function() {
+            $.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,trx,tether,usd-coin&vs_currencies=usd', function(data) {
+                // Update the autoload div with new data
+                $('#autoload').html(data);
+            });
+        }, 1000);
+    });
+</script>
  <?php include_once('includes/sidebar.php') ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
+	  <?php 
+		$userid = $_SESSION['userid'];
+
+		// Prepare a statement
+		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt->bind_param("s", $userid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// Your data retrieval
 		
+		?>
 	  <div class="col-lg-12 col-12">
 				  <div class="box box-inverse ">
 					<div class="box-body">
@@ -38,7 +71,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 							<i class="font-size-26">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 								<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-								</svg>956 
+								</svg><?php echo $row ['total_balance'] ?>.00
 							</i>
 							</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16">
@@ -52,7 +85,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 						</svg>
 						</a>
-						<a href="#" class="btn btn-light mx-2">SEND <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send-arrow-up" viewBox="0 0 16 16">
+						<a href="#" class="btn btn-light mx-2" data-toggle="modal" data-target="#send">SEND <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send-arrow-up" viewBox="0 0 16 16">
 						<path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54l-2.8 7a.5.5 0 1 1-.928-.372l1.895-4.738-7.494 7.494 1.376 2.162a.5.5 0 1 1-.844.537l-1.531-2.407L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM5.93 9.363l7.494-7.494L1.591 6.602l4.339 2.76Z"/>
 						<path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.354a.5.5 0 0 0-.722.016l-1.149 1.25a.5.5 0 1 0 .737.676l.28-.305V14a.5.5 0 0 0 1 0v-1.793l.396.397a.5.5 0 0 0 .708-.708l-1.25-1.25Z"/>
 						</svg></a>
@@ -77,7 +110,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/bitcoin-logo.png" width="50" alt="bitcoin-logo">
 						<span class="ml-2">
-							<small class="font-size-26">$<?php echo $bitcoinPrice; ?></small> <br>
+							<small class="font-size-26" id="autoload">$<?php echo $bitcoinPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
@@ -87,7 +120,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 							<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
 						  </svg>956 <br>
-						  <small class="font-size-16 ">0.00 BTC</small>
+						  <small class="font-size-16 "><?php echo $row ['btc_balance'] ?>.00 BTC</small>
 						  </li>
 						</ul>
 					  </div>
@@ -102,7 +135,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/etheruem-logo.png" width="50" height="60" alt="etheruem-logo">
 						<span class="ml-2">
-							<small class="font-size-26">$<?php echo $ethereumPrice; ?></small> <br>
+							<small class="font-size-26" id="autoload" >$<?php echo $ethereumPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
@@ -112,7 +145,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 							<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
 						  </svg>956 <br>
-						  <small class="font-size-16 ">0.00 ETH</small>
+						  <small class="font-size-16 "><?php echo $row ['eth_balance'] ?>.00 ETH</small>
 						  </li>
 						</ul>
 					  </div>
@@ -127,7 +160,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/tron-logo.png" width="50" alt="tron-logo">
 						<span class="ml-2">
-							<small class="font-size-26">$<?php echo $trxPrice; ?></small> <br>
+							<small class="font-size-26" id="autoload">$<?php echo $trxPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
@@ -137,7 +170,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 							<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
 						  </svg>956 <br>
-						  <small class="font-size-16 ">0.00 TRX</small>
+						  <small class="font-size-16 "><?php echo $row ['tron_balance'] ?>.00 TRX</small>
 						  </li>
 						</ul>
 					  </div>
@@ -152,7 +185,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
 						<span class="ml-2">
-							<small class="font-size-26">$<?php echo $tetherPrice; ?></small> <br>
+							<small class="font-size-26" id="autoload">$<?php echo $tetherPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
@@ -162,7 +195,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 							<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
 						  </svg>956 <br>
-						  <small class="font-size-14 ">0.00 USDT <br>(TRC20)</small>
+						  <small class="font-size-14 "><?php echo $row ['usdt_trc_balance'] ?>.00 USDT <br>(TRC20)</small>
 						  </li>
 						</ul>
 					  </div>
@@ -177,7 +210,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
 						<span class="ml-2">
-							<small class="font-size-26">$<?php echo $usdCoinPrice; ?></small> <br>
+							<small class="font-size-26" id="autoload">$<?php echo $usdCoinPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
@@ -187,15 +220,18 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
 							<path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
 						  </svg>956 <br>
-						  <small class="font-size-14 ">0.00 USDT <br>(ERC20)</small>
+						  <small class="font-size-14 "><?php echo $row ['usdt_erc_balance'] ?>.00 USDT <br>(ERC20)</small>
 						  </li>
 						</ul>
 					  </div>
 					</div>
 				  </div>
 			    </div>	
-				
 			</div>
+			<?php  
+					}
+				}
+			?>
 		</section>
 		<div class="pt-1 col-12">
                         <div class="tradingview-widget-container" style="margin:30px 0px 10px 0px;">

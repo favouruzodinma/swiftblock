@@ -235,7 +235,7 @@
 								lastChanged = 'btc';
 							});
 
-							// Currency => BTC
+							// Currency => BTC 
 							btcFormOutput.on('input', function() {
 								// store current positions in variables
 								var selectionStart = this.selectionStart,

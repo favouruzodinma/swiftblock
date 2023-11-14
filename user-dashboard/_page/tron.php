@@ -31,14 +31,11 @@
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/tron-logo.png" width="60" alt="tron-logo">
+					<p class="font-size-26">0.0000TRON</p>
+					<small>~$0.00</small>
 					</center>				
 				</div>
 				<div class="box-body">
-					<!-- <form action="#" class="dropzone">
-						<div class="fallback">
-							<input name="file" type="file" multiple />
-						</div>
-					</form> -->
 					<div class="mt-20 d-flex justify-content-around align-items-center">
 						<a href="#" class="btn btn-light">RECEIVE
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">

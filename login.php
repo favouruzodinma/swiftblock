@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="./logo.png">
 
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -34,39 +34,83 @@
 
 </head>
 <?php
-	if(isset($_POST['login'])){
-	$email = $_POST["email"];
-	$password = $_POST["password"];
-	require_once('_db.php');
-	$sql = "SELECT * FROM user_login WHERE email='$email' ";
-	$result = mysqli_query($conn, $sql);
-	$user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	if($user){
-		if(password_verify($password, $user["password"])){
-			session_start();
-			$_SESSION['user']='yes';
-			header("location:user-dashboard/_page/dashboard");
-			exit;
-		}else{
-			echo"
-			<div class='alert alert-danger' role='alert'>
-			<strong> Password does not match this email address!!</strong> 
-			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				<span aria-hidden='true'>&times;</span>
-			</button>
-			</div>";
-		}
-	}else{
-		echo"
-		<div class='alert alert-danger' role='alert'>
-		<strong>Invalid Email or Password submitted!!</strong> 
-		<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-			<span aria-hidden='true'>&times;</span>
-		</button>
-		</div>";
-	}
-	}
+	// if(isset($_POST['login'])){
+	// $email = $_POST["email"];
+	// $password = $_POST["password"];
+	// require_once('_db.php');
+	// $sql = "SELECT * FROM user_login WHERE email='$email' ";
+	// $result = mysqli_query($conn, $sql);
+	// $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// if($user){
+	// 	$_SESSION['userid'] = $row['userid'];
+	// 	if(password_verify($password, $user["password"])){
+	// 		session_start();
+	// 		$_SESSION['user']='yes';
+	// 		header("location:user-dashboard/_page/dashboard");
+	// 		exit;
+	// 	}else{
+	// 		echo"
+	// 		<div class='alert alert-danger' role='alert'>
+	// 		<strong> Password does not match this email address!!</strong> 
+	// 		<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+	// 			<span aria-hidden='true'>&times;</span>
+	// 		</button>
+	// 		</div>";
+	// 	}
+	// }else{
+	// 	echo"
+	// 	<div class='alert alert-danger' role='alert'>
+	// 	<strong>Invalid Email or Password submitted!!</strong> 
+	// 	<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+	// 		<span aria-hidden='true'>&times;</span>
+	// 	</button>
+	// 	</div>";
+	// }
+	// }
 ?>
+<?php
+require_once('_db.php'); // Your database connection script
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM user_login WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['userid'] = $user['userid'];
+			$_SESSION['user'] = 'yes';
+            header("Location: user-dashboard/_page/dashboard");
+            exit;
+        } else {
+            echo "
+            <div class='alert alert-danger' role='alert'>
+                <strong>Password does not match this email address!</strong> 
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>";
+        }
+    } else {
+        echo "
+        <div class='alert alert-danger' role='alert'>
+            <strong>Invalid Email or Password submitted!</strong> 
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>";
+    }
+}
+?>
+
 
 
 <body class="auth-page">

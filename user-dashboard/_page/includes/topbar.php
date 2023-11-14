@@ -3,6 +3,7 @@
   if (!isset($_SESSION['user'])) {
     header("location:../../login");
   }
+  require_once('../../_db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="refresh" content="240;url=../../login" />
     <link rel="icon" href="../../logo.png">
 
     <title>SwiftBlock</title>
@@ -34,10 +36,10 @@
           <i data-feather="menu"></i>
       </a>	
       <!-- Logo -->
-      <a href="../../index" class="logo">
+      <a href="../../" class="logo">
         <!-- logo-->
         <div class="logo-lg ">
-              <a href="../../index">
+              <a href="../../">
               </a>
             <!-- <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
             <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span> -->
@@ -78,83 +80,29 @@
               <i data-feather="settings"></i>
           </a>
         </li>	
-        <!-- Notifications -->
-        <li class="dropdown notifications-menu">
-          <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="Notifications">
-            <i data-feather="bell"></i>
-          </a>
-          <ul class="dropdown-menu animated bounceIn">
-
-            <li class="header">
-              <div class="p-20">
-                  <div class="flexbox">
-                      <div>
-                          <h4 class="mb-0 mt-0">Notifications</h4>
-                      </div>
-                      <div>
-                          <a href="#" class="text-danger">Clear All</a>
-                      </div>
-                  </div>
-              </div>
-            </li>
-
-            <li>
-              <!-- inner menu: contains the actual data -->
-              <ul class="menu sm-scrol">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu sapien elementum, in semper diam posuere.
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor commodo porttitor pretium a erat.
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum fermentum.
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-user text-primary"></i> Nunc fringilla lorem 
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="footer">
-                <a href="#">View all</a>
-            </li>
-          </ul>
-        </li>
         <!-- User Account-->
         <li class="dropdown user user-menu">
           <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="User">
-              <i class="icon-User"><span class="path1"></span><span class="path2"></span></i>
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+              </svg>
           </a>
           <ul class="dropdown-menu animated flipInX">
             <li class="user-body">
-               <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-               <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
-               <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
+               <a class="dropdown-item" href="profile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                </svg> Profile</a>
+               <a class="dropdown-item" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                </svg> Settings</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logout"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power text-danger" viewBox="0 0 16 16">
+                <path d="M7.5 1v7h1V1h-1z"/>
+                <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+              </svg> Logout</a>
             </li>
           </ul>
         </li>	

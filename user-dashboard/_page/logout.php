@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_destroy();
-header("location:../../index");
+header("location:../../");
 
 
 // Access the cryptocurrency API

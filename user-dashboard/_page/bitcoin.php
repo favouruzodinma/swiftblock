@@ -31,6 +31,8 @@
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/bitcoin-logo.png" width="60" alt="bitcoin-logo">
+					<p class="font-size-26">0.0000BTC</p>
+					<small>~$0.00</small>
 					</center>				
 				</div>
 				<div class="box-body">

@@ -31,7 +31,7 @@
                                 <p>From zero to crypto in minutes in a while.</p>
                                 <!-- <h3 class="slide-title"><span>Secure</span> and <span>Easy Way</span><br/> To Bitcoin</h3> -->
                                 <p>
-                                    <a href="register" class="slider btn btn-primary">Account</a>
+                                    <a href="signup" class="slider btn btn-primary">Account</a>
                                 </p>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <span>SWIFTBLOCK</span> <span>CRYPTOCURRENCY</span> <span>WORLD WIDE</span>
                                 </h3>
                                  <p>
-                                      <a href="register" class="slider btn btn-primary">Account</a>
+                                      <a href="signup" class="slider btn btn-primary">Account</a>
                                 </p>
                                 </div>
                             </div>

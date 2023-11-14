@@ -31,6 +31,8 @@
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">
+					<p class="font-size-26">0.0000 USDT(TRC20)</p>
+					<small>~$0.00</small>
 					</center>				
 				</div>
 				<div class="box-body">
@@ -40,7 +42,7 @@
 						</div>
 					</form> -->
 					<div class="mt-20 d-flex justify-content-around align-items-center">
-						<a href="#" class="btn btn-light"  data-toggle="modal" data-target="#usdt(usdt20)">RECEIVE
+						<a href="#" class="btn btn-light"  data-toggle="modal" data-target="#usdt(usdtrc20)">RECEIVE
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
 						<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
 						<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
@@ -69,7 +71,9 @@
 	  </div>
   </div>
   <!-- /.content-wrapper -->
-  <div class="modal center-modal fade" id="usdt(usdt20)" tabindex="-1" >
+  
+
+  <div class="modal center-modal fade" id="usdt(usdtrc20)" tabindex="-1" >
 	  <div class="modal-dialog">
 		<div class="modal-content" >
 		  <div class="modal-header">
@@ -108,7 +112,7 @@
 		  </div>
 		</div>
 	  </div>
-	</div>	
+ </div>	
   <?php
 		include_once("includes/footer.php")
 	?>	<!-- Page Content overlay -->
