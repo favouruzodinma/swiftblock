@@ -34,14 +34,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 	})
   </script> -->
   <script>
-    $(document).ready(function() {
-        setInterval(function() {
-            $.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,trx,tether,usd-coin&vs_currencies=usd', function(data) {
-                // Update the autoload div with new data
-                $('#autoload').html(data);
-            });
-        }, 1000);
-    });
+  v
 </script>
  <?php include_once('includes/sidebar.php') ?>
   <!-- Content Wrapper. Contains page content -->
@@ -62,6 +55,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 				// Your data retrieval
 		
 		?>
+
 	  <div class="col-lg-12 col-12">
 				  <div class="box box-inverse ">
 					<div class="box-body">

@@ -91,8 +91,8 @@ if (isset($_POST['login'])) {
             header("Location: user-dashboard/_page/dashboard");
             exit;
         } else {
-            echo "
-            <div class='alert alert-danger' role='alert'>
+            $error = "
+            <div class='' role='alert'>
                 <strong>Password does not match this email address!</strong> 
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
@@ -100,8 +100,8 @@ if (isset($_POST['login'])) {
             </div>";
         }
     } else {
-        echo "
-        <div class='alert alert-danger' role='alert'>
+        $error = "
+        <div class='' role='alert'>
             <strong>Invalid Email or Password submitted!</strong> 
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
@@ -195,6 +195,11 @@ if (isset($_POST['login'])) {
 						<!-- end of php code  -->
 						<!-- Form Starts -->
 						<form action="login" method="POST">
+							<!-- error message validation  -->
+							<?php if (isset($error)) : ?>
+								<div class="alert alert-danger"><?php echo $error; ?></div>
+							<?php endif; ?>
+							<!-- end of error message  -->
 							<!-- Input Field Starts -->
 							<div class="form-group">
 								<input class="form-control" name="email" id="email" placeholder="EMAIL" type="email" required>

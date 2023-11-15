@@ -67,7 +67,7 @@
     <div class="navbar-custom-menu r-side">
       <ul class="nav navbar-nav">	
         <li class="btn-group nav-item d-lg-flex d-none align-items-center">
-          <p class="mb-0 text-fade pr-10 pt-5">Friday, 4th December 2020</p>
+          <p class="mb-0 text-fade pr-10 pt-5"><?php echo "Today is" . date(" D, d M Y") . "<br>";?></p>
         </li>
         <li class="btn-group nav-item d-lg-inline-flex d-none">
           <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen" title="Full Screen">
@@ -110,4 +110,3 @@
     </div>
   </nav>
 </header>
-?>
