@@ -171,7 +171,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					</div>
 				  </div>
 			    </div>
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-6 col-12">
 				  <div class="box box-inverse ">
 				  <div class="box-body">
 					  <h4>USDT</h4>
@@ -196,7 +196,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					</div>
 				  </div>
 			    </div>
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-6 col-12">
 				  <div class="box box-inverse bg-facebook">
 				  <div class="box-body">
 					  <h4>USDT(ERC20)</h4>

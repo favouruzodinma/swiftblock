@@ -23,14 +23,6 @@
 				
 			</div>
 		</div>
-		<?php
-
-		require_once("../../_db.php");
-		$userid = $_SESSION['userid'];
-		if($status='pending'){
-			$sql = $conn->query("UPDATE user_login SET status='active' WHERE userid='$userid' ");
-		}
-		?>
 		
 		<?php 
 	  	require_once("../../_db.php");
@@ -123,7 +115,7 @@
 					<h5 class="font-size-20 pt-3"><?php echo $row['flname'] ?> <?php 
 						if ($row['status'] == 'pending') {
 							?>
-							<a href="profile.php?verify&id=<?php echo $row['userid']; ?>&status=pending" class="my-2">click to Verify</a>
+							
 							<?php 
 						} else {
 							?>
@@ -212,13 +204,13 @@
 					<h4>UPLOAD A VALID PASSPORT/ANY GOVERNMENTAL ID FOR VERIFICATION</h4>			
 				</div>
 				<div class="box-body">
-				<form>
-					<div class="form-group row">
-						<div class="col-sm-10">
-						<input type="file" class="form-control" id="file"value="">
+					<form action="kyc.php" method="POST" enctype="multipart/form-data">
+						<div class="form-group row">
+							<div class="col-sm-10">
+							<input type="file" class="form-control" id="file" value="" name="kyc">
+							</div>
 						</div>
-					</div>
-					<button class="btn btn-dark">Upload</button>
+						<button class="btn btn-dark" type="submit" name="uploadkyc">Upload</button>
 					</form>
 				</div>
 			</div>

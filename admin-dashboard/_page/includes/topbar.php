@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if (!isset($_SESSION['user'])) {
-    header("location:../../admin-login");
+  if (!isset($_SESSION['admin'])) {
+    header("location:../../admin_login");
   }
   require_once('../../_db.php');
 ?>
@@ -13,10 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="refresh" content="240;url=../../login" />
     <link rel="icon" href="../../logo.png">
 
-    <title>SwiftBlock</title>
+    <title>Admin - SwiftBlock</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="css/vendors_css.css">
@@ -110,4 +109,3 @@
     </div>
   </nav>
 </header>
-?>

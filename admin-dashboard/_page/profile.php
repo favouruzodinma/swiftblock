@@ -27,7 +27,7 @@
 		require_once("../../_db.php");
 		$userid = $_SESSION['userid'];
 		if($status='pending'){
-			$sql = $conn->query("UPDATE user_login SET status='active' WHERE userid='$userid' ");
+			$sql = $conn->query("UPDATE admin_login SET status='active' WHERE userid='$userid' ");
 		}
 		?>
 		<?php 
@@ -35,7 +35,7 @@
 		$userid = $_SESSION['userid'];
 
 		// Prepare a statement
-		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt = $conn->prepare("SELECT* FROM admin_login WHERE userid = ?");
 		$stmt->bind_param("s", $userid);
 		$stmt->execute();
 
@@ -129,41 +129,6 @@
 				</div>
 			</div>
 			
-		</section>
-		<!-- Main content -->
-		<section class="content row">
-		    <div class="box col-md-7 mr-4">
-				<div class="box-header">	
-					<h4>USER KYC	</h4>
-					<h4>UPLOAD A VALID PASSPORT/ANY GOVERNMENTAL ID FOR VERIFICATION</h4>			
-				</div>
-				<div class="box-body">
-				<form>
-					<div class="form-group row">
-						<div class="col-sm-10">
-						<input type="file" class="form-control" id="file"value="">
-						</div>
-					</div>
-					<button class="btn btn-dark">Upload</button>
-					</form>
-				</div>
-			</div>
-			<div class="box col-md-4">
-				<div class="box-header">
-					<h4>GET PHRASE</h4>
-					<p>THE RECOVERY PHRASE IS THE MASTER KEY TO YOUR FUNDS. NEVER SHARE IT WITH ANYONE ELSE.</p>			
-				</div>
-				<div class="box-body">
-					<div class="collapse" id="collapseExample">
-					<div class="card card-body">
-						<?php echo $row['phrase'] ?>
-					</div>
-					</div>
-					<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-						Show Phrase
-					</button>
-				</div>
-			</div>
 		</section>
 	  </div>
   </div>

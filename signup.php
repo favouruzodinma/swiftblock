@@ -1,3 +1,71 @@
+<?php
+// print_r($_POST)
+
+if(isset($_POST['register'])){
+	$userid = ("SWB" .rand(203994 , 485789));
+
+	$flname =$_POST["flname"];
+	$email =$_POST["email"];
+	$password =$_POST["password"];
+	$cpassword =$_POST["cpassword"];
+	$ipaddress = $_SERVER['REMOTE_ADDR'];
+	
+	$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+	$errors = array();
+
+	if (empty($flname)OR empty($email) OR empty($password) OR empty($password)){
+		array_push($errors,"All field ar e required");
+	}
+	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+		array_push($errors,"Email is not Valid");
+	}
+	if(strlen($password)<8){
+		array_push($errors,"Character must be at least 8 characters long ");
+	}
+	if($password!==$cpassword){
+		array_push($errors,"Password and comfirm password dont match");
+	}
+	require_once('_db.php');
+	$sql = "SELECT * FROM user_login WHERE email='$email' ";
+	$result= mysqli_query($conn,$sql);
+	$rowCount = mysqli_num_rows($result);
+	if($rowCount>0){
+		array_push($errors,"Email has already been used..");
+	}
+	if(count($errors)>0){
+		foreach($errors as $error){
+			echo "
+				<div class='alert alert-danger d-flex justify-space-between'>
+				<strong>$error</strong> 
+				<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+				<span aria-hidden='true'>&times;</span>
+				</button>
+				</div>";
+			// echo "<div class='alert alert-danger'>$error</div>";
+		}
+	}else{
+		require_once('_db.php');
+		$sql = "INSERT INTO  user_login (userid ,flname, email, password, ip_address) VALUES (?,?,?,?,?)";
+		$stmt = mysqli_stmt_init($conn);
+		$prepareStmt = mysqli_stmt_prepare($stmt,$sql);
+		if($prepareStmt){
+			mysqli_stmt_bind_param($stmt,"sssss",$userid,$flname,$email,$passwordHash, $ipaddress);
+			mysqli_stmt_execute($stmt);
+			echo"
+			<div class='alert alert-success d-flex justify-space-between'>
+			<strong>Registered Successfully...  </strong> 
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			<span aria-hidden='true'>&times;</span>
+			</button>
+			</div>";
+		}else{
+			die("something went wrong");
+		}
+	}
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -7,7 +75,7 @@
   }
 ?>
 <head>
-    <title>Register - SwiftBl;ock</title>
+    <title>Register - SwiftBlock</title>
     <?php
 include('head.php');
 ?>
@@ -92,75 +160,7 @@ include('head.php');
 						<!-- Section Title Ends -->
 						<!-- Form Starts -->
 						<!-- writing my php function to store a new user in the database  -->
-						<div class='container ' style="width:100%">
-						<?php
-						// print_r($_POST)
-
-						if(isset($_POST['register'])){
-    						$userid = ("SWB" .rand(203994 , 485789));
-
-							$flname =$_POST["flname"];
-							$email =$_POST["email"];
-							$password =$_POST["password"];
-							$cpassword =$_POST["cpassword"];
-							
-							$passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-							$errors = array();
-
-							if (empty($flname)OR empty($email) OR empty($password) OR empty($password)){
-								array_push($errors,"All field ar e required");
-							}
-							if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-								array_push($errors,"Email is not Valid");
-							}
-							if(strlen($password)<8){
-								array_push($errors,"Character must be at least 8 characters long ");
-							}
-							if($password!==$cpassword){
-								array_push($errors,"Password and comfirm password dont match");
-							}
-							require_once('_db.php');
-							$sql = "SELECT * FROM user_login WHERE email='$email' ";
-							$result= mysqli_query($conn,$sql);
-							$rowCount = mysqli_num_rows($result);
-							if($rowCount>0){
-								array_push($errors,"Email has already been used..");
-							}
-							if(count($errors)>0){
-								foreach($errors as $error){
-									echo "
-										<div class='alert alert-danger d-flex justify-space-between'>
-										<strong>$error</strong> 
-										<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-										<span aria-hidden='true'>&times;</span>
-										</button>
-										</div>";
-									// echo "<div class='alert alert-danger'>$error</div>";
-								}
-							}else{
-								require_once('_db.php');
-								$sql = "INSERT INTO  user_login (userid ,flname, email, password) VALUES (?,?,?,?)";
-								$stmt = mysqli_stmt_init($conn);
-								$prepareStmt = mysqli_stmt_prepare($stmt,$sql);
-								if($prepareStmt){
-									mysqli_stmt_bind_param($stmt,"ssss",$userid,$flname,$email,$passwordHash);
-									mysqli_stmt_execute($stmt);
-									echo"
-									<div class='alert alert-success d-flex justify-space-between'>
-									<strong>Registered Successfully...  </strong> 
-									<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-									<span aria-hidden='true'>&times;</span>
-									</button>
-									</div>";
-								}else{
-									die("something went wrong");
-								}
-							}
-
-						}
-						?>
-						</div>
+						
 						<!-- end of the php function  -->
 						<form action="signup" method="POST">
 							<!-- Input Field Starts -->

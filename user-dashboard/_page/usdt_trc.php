@@ -42,7 +42,7 @@
 						</div>
 					</form> -->
 					<div class="mt-20 d-flex justify-content-around align-items-center">
-						<a href="#" class="btn btn-light"  data-toggle="modal" data-target="#usdt(usdtrc20)">RECEIVE
+						<a href="#" class="btn btn-light"  data-toggle="modal" data-target="#usdttrc">RECEIVE
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
 						<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
 						<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
@@ -72,47 +72,42 @@
   </div>
   <!-- /.content-wrapper -->
   
-
-  <div class="modal center-modal fade" id="usdt(usdtrc20)" tabindex="-1" >
+  <div class="modal center-modal fade" id="usdttrc" tabindex="-1">
 	  <div class="modal-dialog">
-		<div class="modal-content" >
+		<div class="modal-content">
 		  <div class="modal-header">
-			<h5 class="modal-title">RECEIVE USDT(TRC20)</h5>
+			<h5 class="modal-title">RECIEVE USDT(TRC20)</h5>
 			<button type="button" class="close" data-dismiss="modal">
 			  <span aria-hidden="true">&times;</span>
 			</button>
 		  </div>
 		  <div class="modal-body">
-		  <div class="box">
-				<div class="box-header">
-					<center>
-					<img src="../images/account/isbn1.jpeg" width="200" alt="USDT(TRC20)  Address">
-					</center>
-					<p>wallet address</p>			
-				</div>
-				<div class="overflow-auto" style="height:40%">
-					<div class="box-body">
-						<h4>Network</h4>
-						<span>USDT(TRC20).</span>
-					</div>
-					<div class="box-body">
-						<h4>Expected arrival</h4>
-						<span>1 network confirmation</span>
-					</div>
-					<div class="box-body">
-						<h4>Expected unlock</h4>
-						<span>2 network confirmations</span>
-					</div>
-				</div>
-			</div>
+			<center>
+			<img src="..\images\account\isbn1.jpeg" alt="tron" width="200">
+			<p>Wallet Address</p>
 
+			</center>
+			<div style="border:1px solid black">
+				<p style="border-bottom:1px solid black">
+					<h6>Network</h6>
+					<p>TRC20</p>
+				</p>
+				<p style="border-bottom:1px solid black">
+					<h6>Expected arrival</h6>
+					<p>1 network confirmation</p>
+				</p>
+				<p style="border-bottom:1px solid black">
+					<h6>Expected unlock</h6>
+					<p>2 network confirmation</p>
+				</p>
+			</div>
 		  </div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		  </div>
 		</div>
 	  </div>
- </div>	
+</div>
   <?php
 		include_once("includes/footer.php")
 	?>	<!-- Page Content overlay -->

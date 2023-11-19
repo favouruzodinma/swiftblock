@@ -8,7 +8,7 @@
 		$userid = $_SESSION['userid'];
 
 		// Prepare a statement
-		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt = $conn->prepare("SELECT* FROM admin_login WHERE userid = ?");
 		$stmt->bind_param("s", $userid);
 		$stmt->execute();
 
@@ -29,6 +29,7 @@
 					</div>
 				  </div>
 			    </div>
+				<?php }} ?>
 		<!-- Main content -->
 		<section class="content">
 			<div class="row">
@@ -41,8 +42,8 @@
 					  <div class="mt-20 d-flex justify-content-between">
 						<div class="d-flex">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">809</small> <br>
-							<a href="#" class="text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+							<small class="font-size-26" id="autoload"><?php echo $conn->query("SELECT * FROM user_login") ->num_rows; ?></small> <br>
+							<a href="user" class="text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
 							<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
 							<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
 							</svg>...View all</a>
@@ -68,7 +69,7 @@
 					  <div class="mt-20 d-flex justify-content-between">
 						<div class="d-flex">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">796</small> <br>
+							<small class="font-size-26" id="autoload"><?php echo $conn->query("SELECT * FROM user_login WHERE status='verified'") ->num_rows; ?></small> <br>
 							<p  class=" font-size-12"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-success" viewBox="0 0 16 16">
 							<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
 							</svg> Verified account in use</p>
@@ -93,7 +94,7 @@
 					  <div class="mt-20 d-flex justify-content-between">
 						<div class="d-flex">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">13</small> <br>
+							<small class="font-size-26" id="autoload"><?php echo $conn->query("SELECT * FROM user_login WHERE status='pending'") ->num_rows; ?></small> <br>
 							<p  class=" font-size-12"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-danger" viewBox="0 0 16 16">
 							<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
 							</svg> Inactive User</p>
@@ -164,10 +165,6 @@
 				  </div>
 			    </div>	 -->
 			</div>
-			<?php  
-					}
-				}
-			?>
 		</section>
 	<!-- <div class="col-xl-3 col-12">
 			<div class="box">

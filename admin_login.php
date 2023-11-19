@@ -9,7 +9,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Login - SwiftBlock</title>
+    <title>Admin-Login - SwiftBlock</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
@@ -57,8 +57,8 @@ if (isset($_POST['adminlogin'])) {
             header("Location: admin-dashboard/_page/dashboard");
             exit;
         } else {
-            echo "
-            <div class='alert alert-danger' role='alert'>
+            $error = "
+            <div class='' role='alert'>
                 <strong>Password does not match this email address!</strong> 
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
@@ -66,8 +66,8 @@ if (isset($_POST['adminlogin'])) {
             </div>";
         }
     } else {
-        echo "
-        <div class='alert alert-danger' role='alert'>
+        $error = "
+        <div class='' role='alert'>
             <strong>Invalid Email or Password submitted!</strong> 
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
@@ -76,7 +76,6 @@ if (isset($_POST['adminlogin'])) {
     }
 }
 ?>
-
 
 
 <body class="auth-page">
@@ -159,7 +158,10 @@ if (isset($_POST['adminlogin'])) {
 						
 						<!-- end of php code  -->
 						<!-- Form Starts -->
-						<form action="login" method="POST">
+						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">		
+							<?php if (isset($error)) : ?>
+								<div class="alert alert-danger"><?php echo $error; ?></div>
+							<?php endif; ?>
 							<!-- Input Field Starts -->
 							<div class="form-group">
 								<input class="form-control" name="email" id="email" placeholder="EMAIL" type="email" required>
