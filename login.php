@@ -154,7 +154,7 @@ if (isset($_POST['login'])) {
 						<div class="item item-2">
 							<div>
 								<blockquote>
-									<p>Bitcoin doubled in 7 days. You should not expect anything more. Excellent customer service!</p>
+									<p>ETHERUEM doubled in 7 days. You should not expect anything more. Excellent customer service!</p>
 									<footer><span>Slim Hamdi</span>, South Africa</footer>
 								</blockquote>
 							</div>

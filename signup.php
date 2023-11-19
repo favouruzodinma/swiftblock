@@ -35,7 +35,7 @@ if(isset($_POST['register'])){
 	}
 	if(count($errors)>0){
 		foreach($errors as $error){
-			echo "
+			$error = "
 				<div class='alert alert-danger d-flex justify-space-between'>
 				<strong>$error</strong> 
 				<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -52,7 +52,7 @@ if(isset($_POST['register'])){
 		if($prepareStmt){
 			mysqli_stmt_bind_param($stmt,"sssss",$userid,$flname,$email,$passwordHash, $ipaddress);
 			mysqli_stmt_execute($stmt);
-			echo"
+			$error = "
 			<div class='alert alert-success d-flex justify-space-between'>
 			<strong>Registered Successfully...  </strong> 
 			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -163,6 +163,9 @@ include('head.php');
 						
 						<!-- end of the php function  -->
 						<form action="signup" method="POST">
+							<?php if (isset($error)) : ?>
+								<div class="alert alert-danger"><?php echo $error; ?></div>
+							<?php endif; ?>
 							<!-- Input Field Starts -->
 							<div class="form-group">
 								<input class="form-control" name="flname" id="name" placeholder="NAME" type="text" >

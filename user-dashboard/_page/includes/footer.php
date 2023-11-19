@@ -149,7 +149,7 @@
  <!-- end of recieve modal  -->
 
 <!-- send modal  -->
-<div class="modal fade" id="send">
+<div class="modal fade" id="sendModal">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
@@ -158,11 +158,11 @@
 			  <span aria-hidden="true">&times;</span></button>
 		  </div>
 		  <div class="modal-body">
-            <a href="bitcoin?send" class="btn btn-light"> BITCOIN COIN </a>
-            <a href="etheruem?send" class="btn btn-light"> ETHERUEN COIN </a>
-            <a href="tron?send" class="btn btn-light"> TRON COIN </a>
-            <a href="usdt_erc?send" class="btn btn-light"> USDT(ERC20) COIN </a>
-            <a href="usdt_trc?send" class="btn btn-light"> USDT(TRC20) COIN </a>
+            <a href="send?status=bitcoin" class="btn btn-light"> BITCOIN COIN </a>
+            <a href="send?status=etheruem" class="btn btn-light"> ETHERUEN COIN </a>
+            <a href="send?status=tron" class="btn btn-light"> TRON COIN </a>
+            <a href="send?status=usdt(erc20)" class="btn btn-light"> USDT(ERC20) COIN </a>
+            <a href="send?status=usdt(trc20)" class="btn btn-light"> USDT(TRC20) COIN </a>
 		  </div>
 		</div>
 		<!-- /.modal-content -->
