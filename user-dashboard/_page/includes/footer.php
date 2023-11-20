@@ -159,10 +159,10 @@
 		  </div>
 		  <div class="modal-body">
             <a href="send?status=bitcoin" class="btn btn-light"> BITCOIN COIN </a>
-            <a href="send?status=etheruem" class="btn btn-light"> ETHERUEN COIN </a>
+            <a href="send?status=ethereum" class="btn btn-light"> ETHERUEN COIN </a>
             <a href="send?status=tron" class="btn btn-light"> TRON COIN </a>
-            <a href="send?status=usdt(erc20)" class="btn btn-light"> USDT(ERC20) COIN </a>
-            <a href="send?status=usdt(trc20)" class="btn btn-light"> USDT(TRC20) COIN </a>
+            <a href="send?status=usd-coin" class="btn btn-light"> USDT(ERC20) COIN </a>
+            <a href="send?status=tether" class="btn btn-light"> USDT(TRC20) COIN </a>
 		  </div>
 		</div>
 		<!-- /.modal-content -->

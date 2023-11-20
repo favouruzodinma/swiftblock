@@ -1,53 +1,55 @@
 <?php
 session_start();
-// require_once("../../_db.php");
+
+// Database connection setup (assuming you have a _db.php file with database connection logic)
+require_once('../../_db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userid = $_POST['userid'] ?? ''; // Assuming 'userid' is submitted via POST
-    $uploadDir = 'kyc/'; // Directory to store uploaded files
-    $uploadFile = $uploadDir . basename($_FILES['kyc']['name']); // File path to save in the server
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION)); // Get the file extension
+    $userid = $_POST['userid'] ?? ''; // Assuming you get the user ID from the form
 
-    // Valid image file types
-    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    // Directory to store uploaded files
+    $uploadDirectory = 'kycuploads/'; // Change this directory as per your requirement
+    $uploadFile = $uploadDirectory . basename($_FILES['kyc']['name']);
 
-    // Check if the uploaded file is an image````
+    // Check if the file is an image
+    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES['kyc']['tmp_name']);
-    if ($check === false) {
-        $_SESSION['message'] = 'File is not an image.';
-    } elseif (file_exists($uploadFile)) {
-        $_SESSION['message'] = 'File already exists.';
-    } elseif ($_FILES['kyc']['size'] > 50000000) { // Max file size (50MB)
-        $_SESSION['message'] = 'File is too large.';
-    } elseif (!in_array($imageFileType, $allowedExtensions)) {
-        $_SESSION['message'] = 'Only JPG, JPEG, PNG, and GIF files are allowed.';
-    } else {
-        if (move_uploaded_file($_FILES['kyc']['tmp_name'], $uploadFile)) {
-            // Image uploaded successfully; perform database update here
-            require_once('../../_db.php'); // Include database connection
 
-            $sql = 'UPDATE user_login SET kyc = ? WHERE userid = ?';
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('ss', $uploadFile, $userid);
-            $stmt->execute();
+    if ($check !== false) {
+        // Check file size (you can adjust the file size limit)
+        if ($_FILES['kyc']['size'] <= 5000000) { // Adjust the file size limit as needed
+            // Allow certain file formats (here allowing only image formats)
+            if ($imageFileType === 'jpg' || $imageFileType === 'png' || $imageFileType === 'jpeg' || $imageFileType === 'gif') {
+                // Upload the file to the server
+                if (move_uploaded_file($_FILES['kyc']['tmp_name'], $uploadFile)) {
+                    // Update database with the file path
+                    $stmt = $conn->prepare("UPDATE user_login SET kyc = ? WHERE userid = ?");
+                    $stmt->bind_param("ss", $uploadFile, $userid);
+                    $stmt->execute();
 
-            if ($stmt->affected_rows > 0) {
-                $_SESSION['message'] = 'KYC uploaded successfully.';
-                header("Location: profile.php?id=$userid");
-                exit();
+                    if ($stmt->affected_rows > 0) {
+                        $_SESSION['message'] = 'KYC uploaded and database updated successfully.';
+                        header("Location: profile.php?id=$userid");
+                        exit();
+                    } else {
+                        $_SESSION['message'] = 'Failed to update KYC in the database.';
+                    }
+                    $stmt->close();
+                } else {
+                    $_SESSION['message'] = 'Failed to upload the file.';
+                }
             } else {
-                $_SESSION['message'] = 'Failed to update KYC in the database.';
+                $_SESSION['message'] = 'Only JPG, JPEG, PNG, and GIF files are allowed.';
             }
-            $stmt->close();
         } else {
-            $_SESSION['message'] = 'Error uploading file.';
+            $_SESSION['message'] = 'File size exceeds the limit.';
         }
+    } else {
+        $_SESSION['message'] = 'File is not an image.';
     }
-} else {
-    $_SESSION['message'] = 'Invalid request method.';
-}
 
-// Redirect to previous page
-header('Location: profile.php');
-exit();
+    // Redirect to profile page or any other page after processing
+    header("Location: profile.php?id=$userid");
+    exit();
+}
 ?>

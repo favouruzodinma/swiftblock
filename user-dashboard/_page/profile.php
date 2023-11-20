@@ -205,6 +205,8 @@
 				</div>
 				<div class="box-body">
 					<form action="kyc.php" method="POST" enctype="multipart/form-data">
+						
+						<input type="hidden" value="<?php echo $row ['userid'] ;?>">
 						<div class="form-group row">
 							<div class="col-sm-10">
 							<input type="file" class="form-control" id="file" value="" name="kyc">

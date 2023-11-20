@@ -27,7 +27,7 @@
     <!-- SVG Preloader Ends -->
 	<!-- Live Style Switcher Starts - demo only -->
    
-    <div id="showSwitcher" class="styleSecondColor"><a href="https://wa.me//+2347041390038"><i class="fa fa-whatsapp"  style="color:green"></i></a></div>
+    <div id="showSwitcher" class="styleSecondColor"><a href="https://wa.me//"><i class="fa fa-whatsapp"  style="color:green"></i></a></div>
     <!-- Live Style Switcher Ends - demo only -->
     <!-- Wrapper Starts -->
     <div class="wrapper">

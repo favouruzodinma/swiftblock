@@ -10,27 +10,45 @@
 		<!-- Main content -->
 		<section class="content">
 		    <div class="box">
-            <form method="POST" action="fund" class="container-fluid">
+            <?php 
+            if (isset($_GET['status'])) {
+            require_once("../../_db.php");
+            $coin_name = $_GET['status'];
+        
+            // Prepare a statement to fetch user details by status
+            $stmt = $conn->prepare("SELECT * FROM coin WHERE coin_name = ?");
+            $stmt->bind_param("s", $coin_name);
+            $stmt->execute();
+        
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    // Your data retrieval
+            
+            ?>
+
+            <form class="container-fluid" id="cryptoForm">
                 <br>
-                <h4>SEND TRON TO ALL WALLET</h4>	
+                <h4>SEND COIN TO WALLET</h4>	
                 <div class="form-group row">
                     <label for="network" class="col-sm-12 col-form-label">Network</label>
                     <div class="col-sm-12">
-                    <!-- <input type="text" class="form-control" id="fullname"  value=""> -->
-                    <select name="network" id="" class="form-control" disabled>
-                        <option value="bitcoin">BITCOIN</option>
-                        <option value="ethereum">ETHEREUM</option>
-                        <option value="tron">TRON</option>
-                        <option value="usdt(trc20)">USDT(TRC20)</option>
-                        <option value="usdt(erc20)">USDT(ERC20)</option>
-                    </select>
+                    <select id="coinSelect" class="form-control" disabled>
+                        <option value="<?php echo $row ['coin_name'] ?>" ><?php echo $row ['coin_name'] ?></option>
+
+                     </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="value" class="col-sm-12 col-form-label">Enter amount in tron value</label>
+                    <label for="value" class="col-sm-12 col-form-label">Enter amount in <?php echo $row ['coin_name'] ?> value</label>
                     <div class="col-sm-12">
-                    <input type="number" class="form-control" id="" name="value" value="">
+                     <input type="number" class="form-control" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
                     </div>
+                    <span class="input-group-btn">
+                        <p id="result" style="color:green"></p>
+                        <p id="usd" style="color:green"></p>
+                    </span>
                 </div>
                 <div class="form-group row">
                     <label for="wallet" class="col-sm-12 col-form-label">Wallet Addres</label>
@@ -54,6 +72,35 @@
                 
                 <button class="btn btn-dark w-100" type="submit"  name="">Continue</button>
             </form>
+            <script>
+                  // Function to calculate price as you type
+                function calculatePrice() {
+                    const coinSelect = document.getElementById('coinSelect');
+                    const selectedCoin = coinSelect.value;
+                    const amount = document.getElementById('amountInput').value;
+
+                    // API endpoint to get the current price of a selected coin in USD
+                    const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCoin}&vs_currencies=usd`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            const price = data[selectedCoin].usd;
+                            const result = parseFloat(amount) * parseFloat(price);
+                            document.getElementById('result').innerHTML = `Amount in USD: $${result.toFixed(2)}`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                            document.getElementById('result').innerHTML = 'Error fetching data';
+                        });
+                }
+
+                // Event listener for input changes
+                document.getElementById('amountInput').addEventListener('input', calculatePrice);
+
+            </script>
+        
+            <?php }}}?>
             <br>
 			</div>
 		</section>

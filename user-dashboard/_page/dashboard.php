@@ -276,7 +276,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
   "locale": "en"
 }</script>
 
-                        </div>
+</div>
 		<!-- <div class="col-xl-3 col-12">
 			<div class="box">
 				<div class="box-body">							
