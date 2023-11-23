@@ -5,10 +5,52 @@
  <?php include_once('includes/sidebar.php') ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+  
 	  <div class="container-full">
+      <?php
+// send_coin.php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once("../../_db.php");
+    
+    $coinType = $_POST['coin_name'];
+    $amount = $_POST['amount'];
+    $wallet = $_POST['wallet'];
+    $network = $_POST['network'];
+    $userid = $_POST['userid']; // Assuming you have the user's ID sent from the form
+
+    // Fetch user's balance for the selected coin
+    $stmt = $conn->prepare("SELECT {$coinType}_balance FROM user_login WHERE userid = ?");
+    if ($stmt) {
+        $stmt->bind_param("s", $userid);
+        $stmt->execute();
+        $stmt->bind_result($userCoinBalance);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($amount <= $userCoinBalance) {
+            // Process the transaction, deduct from user's balance, etc.
+            // Your transaction handling code here...
+            echo '<script>alert ("Sorry, Something went wrong during the transfer process, Chat our Customer Support!!")</script>';
+            // echo '<script>window.location="send"</script>';
+            // header('location:send');
+
+        } else {
+            // Insufficient balance, show warning
+            echo '<script>alert ("Insufficient balance!!")</script>';
+            // echo '<script>window.location="send"</script>';
+            // header('location:send');
+        }
+    } else {
+        // Handle prepare statement error
+        echo "Prepare statement error: " . $conn->error;
+    }
+}
+?>
 
 		<!-- Main content -->
 		<section class="content">
+            
 		    <div class="box">
             <?php 
             if (isset($_GET['status'])) {
@@ -28,22 +70,21 @@
             
             ?>
 
-            <form class="container-fluid" id="cryptoForm">
+            <form class="container-fluid" id="cryptoForm" action="send" method="POST">
                 <br>
                 <h4>SEND COIN TO WALLET</h4>	
                 <div class="form-group row">
+                    <input type="hidden" name="userid" value="<?php echo $userid ?>">
                     <label for="network" class="col-sm-12 col-form-label">Network</label>
                     <div class="col-sm-12">
-                    <select id="coinSelect" class="form-control" disabled>
-                        <option value="<?php echo $row ['coin_name'] ?>" ><?php echo $row ['coin_name'] ?></option>
-
-                     </select>
+             
+                     <input type="text" id="coinSelect" class="form-control"  name="coin_name" value="<?php echo $row ['coin_name'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="value" class="col-sm-12 col-form-label">Enter amount in <?php echo $row ['coin_name'] ?> value</label>
                     <div class="col-sm-12">
-                     <input type="number" class="form-control" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
+                     <input type="number" class="form-control" name="amount" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
                     </div>
                     <span class="input-group-btn">
                         <p id="result" style="color:green"></p>
@@ -62,10 +103,9 @@
                     <!-- <input type="text" class="form-control" id="fullname"  value=""> -->
                     <select name="network" id="" class="form-control">
                         <option value="bitcoin">BITCOIN</option>
-                        <option value="ethereum">ETHEREUM</option>
                         <option value="tron">TRON</option>
-                        <option value="usdt(trc20)">USDT(TRC20)</option>
-                        <option value="usdt(erc20)">USDT(ERC20)</option>
+                        <option value="ethereum">ETHEREUM(ERC20)</option>
+                        <option value="BNB">BNB SMART CHAIN (BEP20)</option>
                     </select>
                     </div>
                 </div>

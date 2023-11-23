@@ -15,7 +15,7 @@
 		</div>
 
 		<!-- Main content -->
-		<section class="content">
+		<section class="container">
 		  <div class="row">
 
 			<div class="col-12">

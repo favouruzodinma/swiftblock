@@ -36,7 +36,7 @@ include('header.php');
 								<hr>
 								<!-- Breadcrumb Starts -->
 								<ul class="breadcrumb">
-									<li><a href="index.html"> home</a></li>
+									<li><a href="index"> home</a></li>
 									<li>About</li>
 								</ul>
 								<!-- Breadcrumb Ends -->

@@ -91,13 +91,15 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					</div>
 				  </div>
 			    </div>
+				
 		<!-- Main content -->
 		<section class="content">
 			<div class="row">
 				<div class="col-xl-12 col-12">
 					<div class="row">
 					<div class="col-lg-4 col-12">
-				  <div class="box box-inverse ">
+				 	<a href="bitcoin">
+					 <div class="box box-inverse ">
 					<div class="box-body">
 					  <h5>BITCOIN</h5>
 					  <div class="mt-20 d-flex justify-content-between">
@@ -112,14 +114,16 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						
 						  <li class="list-inline-item ">
 						$0.00  <br>
-						  <small class="font-size-16 "><?php echo $row ['btc_balance'] ?>.00 BTC</small>
+						  <small class="font-size-16 "><?php echo $row ['bitcoin_balance'] ?>.00 BTC</small>
 						  </li>
 						</ul>
 					  </div>
 					</div>
 				  </div>
+					</a>
 			    </div>
 				<div class="col-lg-4 col-12">
+				  <a href="etheruem">
 				  <div class="box box-inverse bg-facebook">
 					<div class="box-body">
 					  <h4>ETHERUEM</h4>
@@ -135,14 +139,16 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						
 						  <li class="list-inline-item ">
 						$0.00  <br>
-						  <small class="font-size-16 "><?php echo $row ['eth_balance'] ?>.00 ETH</small>
+						  <small class="font-size-16 "><?php echo $row ['ethereum_balance'] ?>.00 ETH</small>
 						  </li>
 						</ul>
 					  </div>
 					</div>
 				  </div>
+				  </a>
 			    </div>
 				<div class="col-lg-4 col-12">
+				  <a href="tron">
 				  <div class="box box-inverse">
 					<div class="box-body">
 					  <h4>TRON</h4>
@@ -164,8 +170,10 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					  </div>
 					</div>
 				  </div>
+				  </a>
 			    </div>
 				<div class="col-lg-6 col-12">
+				  <a href="usdt_trc">
 				  <div class="box box-inverse ">
 				  <div class="box-body">
 					  <h4>USDT</h4>
@@ -181,14 +189,16 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						
 						  <li class="list-inline-item ">
 						  $0.00 <br>
-						  <small class="font-size-14 "><?php echo $row ['usdt_trc_balance'] ?>.00 USDT <br>(TRC20)</small>
+						  <small class="font-size-14 "><?php echo $row ['tether_balance'] ?>.00 USDT <br>(TRC20)</small>
 						  </li>
 						</ul>
 					  </div>
 					</div>
-				  </div>
+				  </div>	
+				  </a>
 			    </div>
 				<div class="col-lg-6 col-12">
+				  <a href="usdt_erc">
 				  <div class="box box-inverse bg-facebook">
 				  <div class="box-body">
 					  <h4>USDT(ERC20)</h4>
@@ -204,12 +214,13 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						
 						  <li class="list-inline-item ">
 						$0.00  <br>
-						  <small class="font-size-14 "><?php echo $row ['usdt_erc_balance'] ?>.00 USDT <br>(ERC20)</small>
+						  <small class="font-size-14 "><?php echo $row ['usd-coin_balance'] ?>.00 USDT <br>(ERC20)</small>
 						  </li>
 						</ul>
 					  </div>
 					</div>
 				  </div>
+				  </a>
 			    </div>	
 			</div>
 			<?php  

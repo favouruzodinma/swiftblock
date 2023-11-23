@@ -143,7 +143,7 @@
                                 <p>We are here because we are passionate about open, transparent markets and aim to be a major driving force in widespread adoption, we are the first and the best in cryptocurrency. </p>
                             </div>
                         </div>
-                        <a class="btn btn-primary" href="register">Account</a>
+                        <a class="btn btn-primary" href="signup">Account</a>
                     </div>
                     <!-- Content Ends -->
                 </div>
@@ -411,7 +411,7 @@
 							</div>
 							<!-- Call To Action Text Ends -->
 							<!-- Call To Action Button Starts -->
-							<p class="action-btn"><a class="btn btn-primary" href="register">Register Now</a></p>
+							<p class="action-btn"><a class="btn btn-primary" href="signup">Register Now</a></p>
 							<!-- Call To Action Button Ends -->
 						</div>
 					</div>

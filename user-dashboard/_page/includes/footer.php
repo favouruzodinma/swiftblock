@@ -4,7 +4,7 @@
     <p class="text-center">Copyright © 2018 - <?php  echo date("Y");  ?> SwiftBlock All Rights Reserved</p>
 
   </footer>
-
+ 
   <!-- Control Sidebar -->
   <aside class="control-sidebar">
 	  
@@ -149,6 +149,7 @@
  <!-- end of recieve modal  -->
 
 <!-- send modal  -->
+
 <div class="modal fade" id="sendModal">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -158,19 +159,21 @@
 			  <span aria-hidden="true">&times;</span></button>
 		  </div>
 		  <div class="modal-body">
-            <a href="send?status=bitcoin" class="btn btn-light"> BITCOIN COIN </a>
-            <a href="send?status=ethereum" class="btn btn-light"> ETHERUEN COIN </a>
-            <a href="send?status=tron" class="btn btn-light"> TRON COIN </a>
-            <a href="send?status=usd-coin" class="btn btn-light"> USDT(ERC20) COIN </a>
-            <a href="send?status=tether" class="btn btn-light"> USDT(TRC20) COIN </a>
+    
+            <a href="send?status=bitcoin&userid=<?php echo $userid?>" class="btn btn-light"> BITCOIN COIN </a>
+            <a href="send?status=ethereum&userid=<?php echo $userid?>" class="btn btn-light"> ETHERUEN COIN </a>
+            <a href="send?status=tron&userid=<?php echo $userid?>" class="btn btn-light"> TRON COIN </a>
+            <a href="send?status=usd-coin&userid=<?php echo $userid?>" class="btn btn-light"> USDT(ERC20) COIN </a>
+            <a href="send?status=tether&userid=<?php echo $userid?>" class="btn btn-light"> USDT(TRC20) COIN </a>
+       <?php  //}}?>
 		  </div>
 		</div>
 		<!-- /.modal-content -->
 	  </div>
 	  <!-- /.modal-dialog -->
   </div>
+  
 <!-- end of sending modal  -->
-
 	<!-- Page Content overlay -->
 	  <!-- Modal -->
   <div class="modal center-modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -202,11 +205,13 @@
     
 
   <!-- /.modal -->
-  <script type="text/javascript">
-	(function(w,d,v3){
-	w.chaportConfig = {
-	appId : '654e978bb8b507de5030dd23'
-	};
+ <!-- Begin of Chaport Live Chat code -->
+<script type="text/javascript">
+(function(w,d,v3){
+w.chaportConfig = {
+  appId : '655d365bd1c8ef88d2706370'
+};
 
-	if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
-	</script>
+if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+</script>
+<!-- End of Chaport Live Chat code -->

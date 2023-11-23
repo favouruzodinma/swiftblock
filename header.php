@@ -27,7 +27,7 @@
     <!-- SVG Preloader Ends -->
 	<!-- Live Style Switcher Starts - demo only -->
    
-    <div id="showSwitcher" class="styleSecondColor"><a href="https://wa.me//"><i class="fa fa-whatsapp"  style="color:green"></i></a></div>
+    <div id="showSwitcher" class="styleSecondColor"><a href="https://wa.me//+4366565577629"><i class="fa fa-whatsapp"  style="color:green"></i></a></div>
     <!-- Live Style Switcher Ends - demo only -->
     <!-- Wrapper Starts -->
     <div class="wrapper">
@@ -97,7 +97,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="index">Home</a></li>
                                 <li><a href="about">About Us</a></li>
-                                <li><a href="services">Service</a></li>
+                                <li><a href="location">LOcation</a></li>
                                 <li><a href="signup">Account</a></li>
 								<!-- Cart Icon Starts -->
                                

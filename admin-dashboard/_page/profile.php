@@ -1,3 +1,68 @@
+<?php
+			// Check if the form is submitted
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				// Retrieve user inputs from the form
+				$oldPassword = $_POST['old_password'];
+				$newPassword = $_POST['new_password'];
+				$confirmPassword = $_POST['confirm_password'];
+
+				// Validate if new password and confirm password match
+				if ($newPassword !== $confirmPassword) {
+					// Passwords do not match, handle accordingly (show error message)
+					$error = "New password and confirm password do not match.";
+					// header('location:profile');
+				} else {
+					// Sanitize user inputs
+					$oldPassword = htmlspecialchars($oldPassword);
+					$newPassword = htmlspecialchars($newPassword);
+
+					// Replace this with your own database connection logic
+					require_once('../../_db.php');
+
+					// Retrieve the user's current password from the database
+					$userid = $_SESSION['userid'];
+					$sql = "SELECT * FROM admin_login WHERE userid = ?";
+					$stmt = $conn->prepare($sql);
+					$stmt->bind_param("s", $userid);
+					$stmt->execute();
+					$result = $stmt->get_result();
+
+					if ($result->num_rows === 1) {
+						$user = $result->fetch_assoc();
+						// Verify the old password
+						if (password_verify($oldPassword, $user['password'])) {
+							// Hash the new password before storing it in the database
+							$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+							// Update the user's password in the database
+							$updateSql = "UPDATE admin_login SET password = ? WHERE userid = ?";
+							$updateStmt = $conn->prepare($updateSql);
+							$updateStmt->bind_param("ss", $hashedPassword, $userid);
+							if ($updateStmt->execute()) {
+								// Password updated successfully
+								$success = "Password updated successfully!";
+								// header('location:profile');
+							} else {
+								// Handle database update error
+								$error = "Password update failed. Please try again.";
+								// header('location:profile');
+							}
+						} else {
+							// Old password does not match
+							$error = "Old password is incorrect.";
+							// header('location:profile');
+						}
+					} else {
+						// User not found in the database
+						$error = "User not found.";
+						// header('location:profile');
+					}
+
+					// Close the database connection
+					$conn->close();
+				}
+			}
+		?>
 <?php include_once('includes/topbar.php') ?>
   
  <?php include_once('includes/sidebar.php') ?>
@@ -22,6 +87,7 @@
 				
 			</div>
 		</div>
+
 		<?php
 
 		require_once("../../_db.php");
@@ -104,27 +170,33 @@
 				
 				</div>
 				<div class="box-body">
-				<form>
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+					<?php if (isset($error)) : ?>
+						<div class="alert alert-danger"><?php echo $error; ?></div>
+					<?php endif; ?>
+					<?php if (isset($success)) : ?>
+						<div class="alert alert-success"><?php echo $success; ?></div>
+					<?php endif; ?>
 					<h4>SECURITY</h4>
 					<div class="form-group row">
 						<label for="fullname" class="col-sm-2 col-form-label">Old(password)</label>
 						<div class="col-sm-10">
-						<input type="password" class="form-control" id="fullname" name="password" value="">
+						<input type="password" class="form-control" id="fullname" name="old_password" value="">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="email" class="col-sm-2 col-form-label">New(password)</label>
 						<div class="col-sm-10">
-						<input type="password" class="form-control" id="email" name="npassword" value="">
+						<input type="password" class="form-control" id="email" name="new_password" value="">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="email" class="col-sm-2 col-form-label">Comfirm(password)</label>
 						<div class="col-sm-10">
-						<input type="password" class="form-control" id="email" name="cpassword" value="">
+						<input type="password" class="form-control" id="email" name="confirm_password" value="">
 						</div>
 					</div>
-					<button class="btn btn-dark">Reset</button>
+					<button class="btn btn-dark" type="submit">Reset</button>
 					</form>
 				</div>
 			</div>

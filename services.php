@@ -20,7 +20,7 @@
 								<hr>
 								<!-- Breadcrumb Starts -->
 								<ul class="breadcrumb">
-									<li><a href="index.html"> home</a></li>
+									<li><a href="index"> home</a></li>
 									<li>services</li>
 								</ul>
 								<!-- Breadcrumb Ends -->

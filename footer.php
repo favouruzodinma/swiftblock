@@ -30,13 +30,13 @@
                             <h4>Contact Info </h4>
                             <div class="contacts">
                                 <div>
-                                    <span>support@emmcoin.com</span>
+                                    <span>swiftblock97@gmail.com</span>
                                 </div>
                                 <div>
-                                    <span>+2348165852793</span>
+                                    <span>+4366565577629</span>
                                 </div>
                                 <div>
-                                    <span>Ikeja, Lagos</span>
+                                    <span>Moscow, Russia</span>
                                 </div>
                             </div>
 							<!-- Social Media Profiles Starts -->
