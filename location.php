@@ -21,6 +21,13 @@ include('head.php');
         <?php
 include('header.php');
         ?>
+         <style>
+        /* Set the size of the iframe */
+        #map {
+            width: 100%;
+            height: 400px; /* Adjust the height as needed */
+        }
+    </style>
         <!-- Header Ends -->
 		<!-- Banner Area Starts -->
 		<section class="banner-area">
@@ -54,12 +61,12 @@ include('header.php');
         <section class="location-page">
             <div class="container">
 				<!-- Section Content Starts -->
-                <div class="row about-content">
+                <div class="row ">
                     <!-- Image Starts -->
-                    <div class="col-sm-12 col-md-12 col-lg-12 ">
-                        
                     
-                    </div>
+                        <iframe id="map" frameborder="0" style="border:0"
+                            src="https://yandex.com/map-widget/v1/?um=constructor%3A1f88c44b9f4a4937a61b1011b75a96bcbf7c08b58b7c7b96e6b0d7c04b4e54d1&amp;source=constructor" allowfullscreen>
+                        </iframe>
                    
                 </div>
                 <!-- Section Content Ends -->

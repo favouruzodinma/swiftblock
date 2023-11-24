@@ -123,181 +123,199 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                                         <div class="form-group row">
                                             <label for="network" class="col-sm-12 col-form-label">Network</label>
                                             <div class="col-sm-12">
-                                            <input type="hidden" value="<?php  echo $userid?>">
+                                            <input type="hidden" value="<?php  echo $userid?>" name="userid">
                                             <!-- <input type="text" class="form-control" id="fullname"  value=""> -->
-                                            <select name="coin_name" id="" class="form-control">
-                                                <option value="bitcoin">BITCOIN</option>
-                                                <option value="ethereum">ETHEREUM</option>
-                                                <option value="tron">TRON</option>
-                                                <option value="tether">USDT(TRC20)</option>
-                                                <option value="usd-coin">USDT(ERC20)</option>
+                                            <select name="coin_name"  id="" class="form-control">
+                                                <option name="coin_name" value="bitcoin">BITCOIN</option>
+                                                <option name="coin_name" value="ethereum">ETHEREUM</option>
+                                                <option name="coin_name" value="tron">TRON</option>
+                                                <option name="coin_name" value="tether">USDT(TRC20)</option>
+                                                <option name="coin_name" value="usd-coin">USDT(ERC20)</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="value" class="col-sm-12 col-form-label">Enter amount in (VALUE)</label>
                                             <div class="col-sm-12">
-                                            <input type="number" class="form-control" id="" name="amount-value" value="">
+                                            <input type="text" class="form-control" id="" name="amount_value" value="" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="usd" class="col-sm-12 col-form-label">Enter amount in (USD)</label>
                                             <div class="col-sm-12">
-                                            <input type="number" class="form-control" id="" name="amount-usd" value="">
+                                            <input type="text" class="form-control" id="" name="amount_usd" value="" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="wallet" class="col-sm-12 col-form-label">Wallet Addres</label>
                                             <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="" name="wallet" value="">
+                                            <input type="text" class="form-control" id="" name="wallet" value="" required>
                                             </div>
                                         </div>
-                                        <button class="btn btn-dark w-100" type="submit"  name="fundwallet">Continue</button>
+                                        <input class="btn btn-dark w-100" type="submit" value="Continue" name="fundwallet">
                                     </form>
                                 
                                 </div>
                             </div>
-                            <section class="cotainer">
-                                <div class="row">
-                                        <div class="col-xl-12 col-12">
-                                                    <div class="row">
-                                                    <div class="col-lg-4 col-12">
-                                                <div class="box box-inverse ">
-                                                    <div class="box-body">
-                                                    <h5>BITCOIN</h5>
-                                                    <div class="mt-20 d-flex justify-content-between">
-                                                        <div class="d-flex">
-                                                        <img src="../images/logo/bitcoin-logo.png" width="50" alt="bitcoin-logo">
-                                                        <span class="ml-2">
-                                                            <small class="font-size-26" id="autoload">$<?php echo $bitcoinPrice; ?></small> <br>
-                                                            <small >6.26%</small>
-                                                        </span>
-                                                        </div>
-                                                        <ul class="list-inline float-right mb-0">
-                                                        
-                                                        <li class="list-inline-item ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                                        </svg>956 <br>
-                                                        <small class="font-size-16 "><?php echo $row ['bitcoin_balance'] ?>.00 BTC</small>
-                                                        </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-lg-4 col-12">
-                                                <div class="box box-inverse bg-facebook">
-                                                    <div class="box-body">
-                                                    <h4>ETHERUEM</h4>
-                                                    <div class="mt-20 d-flex justify-content-between">
-                                                        <div class="d-flex">
-                                                        <img src="../images/logo/etheruem-logo.png" width="50" height="60" alt="etheruem-logo">
-                                                        <span class="ml-2">
-                                                            <small class="font-size-26" id="autoload" >$<?php echo $ethereumPrice; ?></small> <br>
-                                                            <small >6.26%</small>
-                                                        </span>
-                                                        </div>
-                                                        <ul class="list-inline float-right mb-0">
-                                                        
-                                                        <li class="list-inline-item ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                                        </svg>956 <br>
-                                                        <small class="font-size-16 "><?php echo $row ['ethereum_balance'] ?>.00 ETH</small>
-                                                        </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-lg-4 col-12">
-                                                <div class="box box-inverse">
-                                                    <div class="box-body">
-                                                    <h4>TRON</h4>
-                                                    <div class="mt-20 d-flex justify-content-between">
-                                                        <div class="d-flex">
-                                                        <img src="../images/logo/tron-logo.png" width="50" alt="tron-logo">
-                                                        <span class="ml-2">
-                                                            <small class="font-size-26" id="autoload">$<?php echo $trxPrice; ?></small> <br>
-                                                            <small >6.26%</small>
-                                                        </span>
-                                                        </div>
-                                                        <ul class="list-inline float-right mb-0">
-                                                        
-                                                        <li class="list-inline-item ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                                        </svg>956 <br>
-                                                        <small class="font-size-16 "><?php echo $row ['tron_balance'] ?>.00 TRX</small>
-                                                        </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                <div class="box box-inverse ">
-                                                <div class="box-body">
-                                                    <h4>USDT</h4>
-                                                    <div class="mt-20 d-flex justify-content-between">
-                                                        <div class="d-flex">
-                                                        <img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
-                                                        <span class="ml-2">
-                                                            <small class="font-size-26" id="autoload">$<?php echo $tetherPrice; ?></small> <br>
-                                                            <small >6.26%</small>
-                                                        </span>
-                                                        </div>
-                                                        <ul class="list-inline float-right mb-0">
-                                                        
-                                                        <li class="list-inline-item ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                                        </svg>956 <br>
-                                                        <small class="font-size-14 "><?php echo $row ['tether_balance'] ?>.00 USDT <br>(TRC20)</small>
-                                                        </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                <div class="box box-inverse bg-facebook">
-                                                <div class="box-body">
-                                                    <h4>USDT(ERC20)</h4>
-                                                    <div class="mt-20 d-flex justify-content-between">
-                                                        <div class="d-flex">
-                                                        <img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
-                                                        <span class="ml-2">
-                                                            <small class="font-size-26" id="autoload">$<?php echo $usdCoinPrice; ?></small> <br>
-                                                            <small >6.26%</small>
-                                                        </span>
-                                                        </div>
-                                                        <ul class="list-inline float-right mb-0">
-                                                        
-                                                        <li class="list-inline-item ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                                        </svg>956 <br>
-                                                        <small class="font-size-14 "><?php echo $row ['usd-coin_balance'] ?>.00 USDT <br>(ERC20)</small>
-                                                        </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>	
-                                            </div>
-                               
-                            </section>
+                            <section class="content">
+			<div class="row">
+				<div class="col-xl-12 col-12">
+					<div class="row">
+					<div class="col-lg-4 col-12">
+				 	<a href="bitcoin">
+					 <div class="box box-inverse ">
+					<div class="box-body">
+					  <h5>BITCOIN</h5>
+					  <div class="mt-20 d-flex justify-content-between">
+						<div class="d-flex">
+						<img src="../images/logo/bitcoin-logo.png" width="50" alt="bitcoin-logo">
+						<span class="ml-2">
+							<small class="font-size-26" id="autoload">$<?php echo $bitcoinPrice; ?></small> <br>
+							<small >6.26%</small>
+						</span>
+						</div>
+						<ul class="list-inline float-right mb-0" id="bitcoinAmountDisplay">
+						
+						  <li class="list-inline-item ">
+						$<?php
+						$bitcoin_result = $bitcoinPrice * $row['bitcoin_balance'];
+						echo $bitcoin_result;
+						?>  <br>
+						  <small class="font-size-16 "><?php echo $row ['bitcoin_balance'] ?> BTC</small>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+					</a>
+			    </div>
+				<div class="col-lg-4 col-12">
+				  <a href="etheruem">
+				  <div class="box box-inverse bg-facebook">
+					<div class="box-body">
+					  <h4>ETHERUEM</h4>
+					  <div class="mt-20 d-flex justify-content-between">
+						<div class="d-flex">
+						<img src="../images/logo/etheruem-logo.png" width="50" height="60" alt="etheruem-logo">
+						<span class="ml-2">
+							<small class="font-size-26" id="autoload" >$<?php echo $ethereumPrice; ?></small> <br>
+							<small >6.26%</small>
+						</span>
+						</div>
+						<ul class="list-inline float-right mb-0">
+						
+						  <li class="list-inline-item ">
+						$<?php
+						$ethereum_result = $ethereumPrice * $row['ethereum_balance'];
+						echo $ethereum_result;
+						?>   <br>
+						  <small class="font-size-16 "><?php echo $row ['ethereum_balance'] ?> ETH</small>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  </a>
+			    </div>
+				<div class="col-lg-4 col-12">
+				  <a href="tron">
+				  <div class="box box-inverse">
+					<div class="box-body">
+					  <h4>TRON</h4>
+					  <div class="mt-20 d-flex justify-content-between">
+						<div class="d-flex">
+						<img src="../images/logo/tron-logo.png" width="50" alt="tron-logo">
+						<span class="ml-2">
+							<small class="font-size-26" id="autoload">$<?php echo $trxPrice; ?></small> <br>
+							<small >6.26%</small>
+						</span>
+						</div>
+						<ul class="list-inline float-right mb-0">
+						
+						  <li class="list-inline-item ">
+						$<?php
+						$tron_result = $trxPrice * $row['tron_balance'];
+						echo $tron_result;
+						?>  <br>
+						  <small class="font-size-16 "><?php echo $row ['tron_balance'] ?> TRX</small>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  </a>
+			    </div>
+				<div class="col-lg-6 col-12">
+				  <a href="usdt_trc">
+				  <div class="box box-inverse ">
+				  <div class="box-body">
+					  <h4>USDT</h4>
+					  <div class="mt-20 d-flex justify-content-between">
+						<div class="d-flex">
+						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
+						<span class="ml-2">
+							<small class="font-size-26" id="autoload">$<?php echo $tetherPrice; ?></small> <br>
+							<small >6.26%</small>
+						</span>
+						</div>
+						<ul class="list-inline float-right mb-0">
+						
+						  <li class="list-inline-item ">
+						  $<?php
+							$tether_result = $tetherPrice * $row['tether_balance'];
+							echo $tether_result;
+							?> <br>
+						  <small class="font-size-14 "><?php echo $row ['tether_balance'] ?> USDT <br>(TRC20)</small>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </div>	
+				  </a>
+			    </div>
+				<div class="col-lg-6 col-12">
+				  <a href="usdt_erc">
+				  <div class="box box-inverse bg-facebook">
+				  <div class="box-body">
+					  <h4>USDT(ERC20)</h4>
+					  <div class="mt-20 d-flex justify-content-between">
+						<div class="d-flex">
+						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
+						<span class="ml-2">
+							<small class="font-size-26" id="autoload">$<?php echo $usdCoinPrice; ?></small> <br>
+							<small >6.26%</small>
+						</span>
+						</div>
+						<ul class="list-inline float-right mb-0">
+						
+						  <li class="list-inline-item ">
+						$<?php
+						$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
+						echo $usd_result;
+						?> <br>
+						  <small class="font-size-14 "><?php echo $row ['usd-coin_balance'] ?> USDT <br>(ERC20)</small>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </div>
+				  </a>
+			    </div>	
+			</div>
+			<?php  
+					}
+				}
+			?>
+		</section>
                             
-                        </section>
+            </section>
 
-                                
-                                <?php }} } ?>
-                        <!-- /.content -->
                     
-                    </div>
-                </div>
+                    <?php }} } ?>
+            <!-- /.content -->
+        
+        </div>
+        </div>
                 <!-- /.content-wrapper -->
                 <?php
                         include_once("includes/footer.php")

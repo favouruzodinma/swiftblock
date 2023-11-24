@@ -20,8 +20,6 @@
 
 			<div class="col-12">
 
-				<!-- /.box-header -->
-				<div class="box-body">
 					<div class="table-responsive">
 						
 					  <table id="example5" class="table table-bordered table-striped" style="width:100%">
@@ -69,7 +67,7 @@
 								<td><?php echo $row['flname']; ?></td>
 								<td><?php echo $row['email']; ?></td>
 								<td><?php echo $row['userid']; ?></td>
-								<td><?php echo $row['kyc']; ?></td>
+								<td><img src="../../<?php echo $row['kyc']; ?>" alt="user_kyc"></td>
 								<td><?php echo $row['ip_address']; ?></td>
 								<td><?php 
                                 switch ($row['status']) {
@@ -94,8 +92,6 @@
 						</tbody>
 					</table>
 					</div>
-				</div>
-				<!-- /.box-body --> 
 			</div> 
 		  </div>
 		  <!-- /.row -->

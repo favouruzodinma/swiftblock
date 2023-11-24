@@ -46,7 +46,7 @@
 		    <div class="box">
 				<div class="box-header">
 					<h4>TRANSACTIONS HISTORY</h4>
-					<p>Transaction History shows information about all BITCOIN Transactions.</p>			
+					<p>Transaction History shows information about all TRON Transactions.</p>			
 				</div>
 				<div class="box-body">
 					<span>No Transaction record.</span>

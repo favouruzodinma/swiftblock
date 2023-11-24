@@ -30,8 +30,10 @@
 		    <div class="box">
 				<div class="box-header">	
 					<center>
-					<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">
-					</center>				
+						<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">
+						<p class="font-size-26">0.0000 USDT(ERC20)</p>
+						<small>~$0.00</small>
+					</center>					
 				</div>
 				<div class="box-body">
 					<!-- <form action="#" class="dropzone">
@@ -59,7 +61,7 @@
 		    <div class="box">
 				<div class="box-header">
 					<h4>TRANSACTIONS HISTORY</h4>
-					<p>Transaction History shows information about all BITCOIN Transactions.</p>			
+					<p>Transaction History shows information about all USDT(TRC20) Transactions.</p>			
 				</div>
 				<div class="box-body">
 					<span>No Transaction record.</span>

@@ -1,55 +1,49 @@
 <?php
-session_start();
+// kyc.php
 
-// Database connection setup (assuming you have a _db.php file with database connection logic)
-require_once('../../_db.php');
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['uploadkyc'])) {
+    require_once("../../_db.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userid = $_POST['userid'] ?? ''; // Assuming you get the user ID from the form
+    // Get the user ID
+    $userid = $_POST['userid']; // Replace this with the actual user ID
 
-    // Directory to store uploaded files
-    $uploadDirectory = 'kycuploads/'; // Change this directory as per your requirement
-    $uploadFile = $uploadDirectory . basename($_FILES['kyc']['name']);
+    // File upload handling
+    if (isset($_FILES['kyc']) && $_FILES['kyc']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['kyc']['tmp_name'];
+        $fileName = $_FILES['kyc']['name'];
+        $fileSize = $_FILES['kyc']['size'];
+        $fileType = $_FILES['kyc']['type'];
+        
+        // Specify the directory where you want to store the uploaded file
+        $uploadDirectory = "../../uploads/"; // Change this to your desired directory
 
-    // Check if the file is an image
-    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-    $check = getimagesize($_FILES['kyc']['tmp_name']);
+        // Move the uploaded file to the specified directory
+        $targetFilePath = $uploadDirectory . basename($fileName);
+        if (move_uploaded_file($fileTmpPath, $targetFilePath)) {
+            // Update the user_login table with the file path for the user's KYC
+            $updateQuery = "UPDATE user_login SET kyc = ? WHERE userid = ?";
+            $stmt = $conn->prepare($updateQuery);
 
-    if ($check !== false) {
-        // Check file size (you can adjust the file size limit)
-        if ($_FILES['kyc']['size'] <= 5000000) { // Adjust the file size limit as needed
-            // Allow certain file formats (here allowing only image formats)
-            if ($imageFileType === 'jpg' || $imageFileType === 'png' || $imageFileType === 'jpeg' || $imageFileType === 'gif') {
-                // Upload the file to the server
-                if (move_uploaded_file($_FILES['kyc']['tmp_name'], $uploadFile)) {
-                    // Update database with the file path
-                    $stmt = $conn->prepare("UPDATE user_login SET kyc = ? WHERE userid = ?");
-                    $stmt->bind_param("ss", $uploadFile, $userid);
-                    $stmt->execute();
+            if ($stmt) {
+                $stmt->bind_param("ss", $targetFilePath, $userid);
+                $stmt->execute();
 
-                    if ($stmt->affected_rows > 0) {
-                        $_SESSION['message'] = 'KYC uploaded and database updated successfully.';
-                        header("Location: profile.php?id=$userid");
-                        exit();
-                    } else {
-                        $_SESSION['message'] = 'Failed to update KYC in the database.';
-                    }
-                    $stmt->close();
+                if ($stmt->affected_rows > 0) {
+                    echo "KYC image uploaded successfully!";
+                    header('location:'.$_SERVER["HTTP_REFERER"]);
                 } else {
-                    $_SESSION['message'] = 'Failed to upload the file.';
+                    echo "Failed to update KYC image!";
                 }
+
+                $stmt->close();
             } else {
-                $_SESSION['message'] = 'Only JPG, JPEG, PNG, and GIF files are allowed.';
+                echo "Prepare statement error: " . $conn->error;
             }
         } else {
-            $_SESSION['message'] = 'File size exceeds the limit.';
+            echo "File upload failed!";
         }
     } else {
-        $_SESSION['message'] = 'File is not an image.';
+        echo "No file uploaded or an error occurred during upload.";
     }
-
-    // Redirect to profile page or any other page after processing
-    header("Location: profile.php?id=$userid");
-    exit();
 }
 ?>

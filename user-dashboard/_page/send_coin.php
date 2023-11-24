@@ -23,14 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Process the transaction, deduct from user's balance, etc.
             // Your transaction handling code here...
             echo '<script>alert ("Sorry, Something went wrong during the transfer process, Chat our Customer Support!!")</script>';
-            echo '<script>window.location="send"</script>';
-            // header('location:send');
+            // echo '<script>window.location="send"</script>';
+            header('location:'.$_SERVER["HTTP_REFERER"]);
+            exit();
 
         } else {
             // Insufficient balance, show warning
             echo '<script>alert ("Insufficient balance!!")</script>';
-            echo '<script>window.location="send"</script>';
+            // echo '<script>window.location="send"</script>';
             // header('location:send');
+            header('location:'.$_SERVER["HTTP_REFERER"]);
+
+            exit();
         }
     } else {
         // Handle prepare statement error
