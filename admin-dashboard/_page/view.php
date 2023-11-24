@@ -302,10 +302,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 				  </a>
 			    </div>	
 			</div>
-			<?php  
-					}
-				}
-			?>
+			
 		</section>
                             
             </section>

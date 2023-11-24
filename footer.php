@@ -19,7 +19,7 @@
                                 <ul>
                                     <li><a href="index">Home</a></li>
                                     <li><a href="about">About us</a></li>
-                                    <li><a href="service">Service</a></li>
+                                    <li><a href="location">Location</a></li>
                                     <li><a href="login">Account</a></li>
                                 </ul>
                             </div>

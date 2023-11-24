@@ -1,4 +1,15 @@
+<?php
+$url = "https://api.coingecko.com/api/v3/simple/price?ids=usd-coin&vs_currencies=usd";
+$get = file_get_contents($url);
+$prices = json_decode($get, true);
 
+$defaultPrices = [
+    'usd-coin' => 1     // Replace with a default price for USD Coin
+];
+
+// Assign prices or use default values if API fails
+$usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
+?>
 
 <?php include_once('includes/topbar.php') ?>
   
@@ -10,29 +21,37 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<!-- <h3 class="page-title">Advanced Form Elements</h3>
-					<div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Forms</li>
-								<li class="breadcrumb-item active" aria-current="page">Advanced Form Elements</li>
-							</ol>
-						</nav>
-					</div> -->
+
 				</div>
 				
 			</div>
 		</div>
+		<?php 
+		$userid = $_SESSION['userid'];
 
+		// Prepare a statement
+		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt->bind_param("s", $userid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// Your data retrieval
+		
+		?>
 		<!-- Main content -->
 		<section class="content">
 		    <div class="box">
 				<div class="box-header">	
 					<center>
 						<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">
-						<p class="font-size-26">0.0000 USDT(ERC20)</p>
-						<small>~$0.00</small>
+						<p class="font-size-24"><?php echo $row ['usd-coin_balance'] ?> USDT(ERC20)</p>
+						<small class="font-size-16 ">~$<?php
+						$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
+						echo $usd_result;
+						?></small>
 					</center>					
 				</div>
 				<div class="box-body">
@@ -84,8 +103,10 @@
 			<center>
 			<img src="..\images\account\isbn5.jpeg" alt="tron" width="200">
 			<p>Wallet Address</p>
-
+			<input type="text" value="<?php echo $row ['usd-coin_wallet'] ?>" id="copyInput">
+			<button onclick="copyText()" class="btn btn-sm btn-primary">Copy</button>
 			</center>
+			<br>
 			<div style="border:1px solid black">
 				<p style="border-bottom:1px solid black">
 					<h6>Network</h6>
@@ -106,9 +127,25 @@
 		  </div>
 		</div>
 	  </div>
+	  <script>
+		 function copyText() {
+			// Select the input field
+			const copyInput = document.getElementById('copyInput');
+
+			// Select the text in the input field
+			copyInput.select();
+			copyInput.setSelectionRange(0, 99999); /* For mobile devices */
+
+			// Copy the text inside the input field
+			document.execCommand('copy');
+
+			// Log a message or perform any action to indicate successful copying
+			console.log('Text copied: ' + copyInput.value);
+			}
+	 </script>
 </div>
   
-  <?php
+  <?php }}
 		include_once("includes/footer.php")
 	?>	<!-- Page Content overlay -->
 	

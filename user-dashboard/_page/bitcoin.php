@@ -1,4 +1,15 @@
+<?php
+$url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd";
+$get = file_get_contents($url);
+$prices = json_decode($get, true);
 
+$defaultPrices = [
+    'bitcoin' => 36000, // Replace with a default price for Bitcoin
+];
+
+// Assign prices or use default values if API fails
+$bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
+?>
 
 <?php include_once('includes/topbar.php') ?>
   
@@ -24,15 +35,32 @@
 				
 			</div>
 		</div>
+		<?php 
+		$userid = $_SESSION['userid'];
 
+		// Prepare a statement
+		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt->bind_param("s", $userid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// Your data retrieval
+		
+		?>
 		<!-- Main content -->
 		<section class="content">
 		    <div class="box">
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/bitcoin-logo.png" width="60" alt="bitcoin-logo">
-					<p class="font-size-26">0.0000BTC</p>
-					<small>~$0.00</small>
+					<p class="font-size-26"><?php echo $row ['bitcoin_balance'] ?>BTC</p>
+					<small class="font-size-16">~$<?php
+						$bitcoin_result = $bitcoinPrice * $row['bitcoin_balance'];
+						echo $bitcoin_result;
+						?> </small>
 					</center>				
 				</div>
 				<div class="box-body">
@@ -84,8 +112,11 @@
 			<center>
 			<img src="..\images\account\isbn4.jpeg" alt="tron" width="200">
 			<p>Wallet Address</p>
+			<input type="text" value="<?php echo $row ['bitcoin_wallet'] ?>" id="copyInput">
+			<button onclick="copyText()" class="btn btn-sm btn-primary">Copy</button>
 
 			</center>
+			<br>
 			<div style="border:1px solid black">
 				<p style="border-bottom:1px solid black">
 					<h6>Network</h6>
@@ -106,9 +137,25 @@
 		  </div>
 		</div>
 	  </div>
+	  <script>
+		 function copyText() {
+			// Select the input field
+			const copyInput = document.getElementById('copyInput');
+
+			// Select the text in the input field
+			copyInput.select();
+			copyInput.setSelectionRange(0, 99999); /* For mobile devices */
+
+			// Copy the text inside the input field
+			document.execCommand('copy');
+
+			// Log a message or perform any action to indicate successful copying
+			console.log('Text copied: ' + copyInput.value);
+			}
+	 </script>
 </div>
   
-  <?php
+  <?php }}
 		include_once("includes/footer.php")
 	?>	<!-- Page Content overlay -->
 	
