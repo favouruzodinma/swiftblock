@@ -46,7 +46,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/tron-logo.png" width="60" alt="tron-logo">
-					<p class="font-size-26"><?php echo $row ['tron_balance'] ?>.00 TRON</p>
+					<p class="font-size-26"><?php echo $row ['tron_balance'] ?> TRON</p>
 					<small class="font-size-16">~$<?php
 						$tron_result = $trxPrice * $row['tron_balance'];
 						echo $tron_result;
@@ -69,6 +69,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 				</div>
 			</div>
 		</section>
+		<?php }} ?>
 		<!-- /.content -->
 		<section class="content">
 		    <div class="box">
@@ -77,12 +78,65 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 					<p>Transaction History shows information about all TRON Transactions.</p>			
 				</div>
 				<div class="box-body">
-					<span>No Transaction record.</span>
+					<?php 
+						$userid = $_SESSION['userid'];
+
+						// Prepare a statement
+						$stmt = $conn->prepare("SELECT * FROM history WHERE userid = ? AND coinType = ?");
+						$coinType = 'tron'; // Set coinType as 'bitcoin'
+						$stmt->bind_param("ss", $userid, $coinType);
+						$stmt->execute();
+
+						$result = $stmt->get_result();
+
+						if ($result->num_rows > 0) {
+					?>
+					<table id="example5" class="table table-bordered table-striped" style="width:100%">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>AMOUNT</th>
+								<th>COIN NAME</th>
+								<th>DATE/TIME</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+								$num = 1;
+								while ($row = $result->fetch_assoc()) {
+							?>
+							<tr>
+								<td><?php echo $num++; ?></td>
+								<td><?php echo $row['updated_balance']; ?>BTC</td>
+								<td><?php echo $row['coinType']; ?></td>
+								<td><?php echo $row['updated_at']; ?></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+					<?php } else { ?>
+					<span class="text-danger">No Transaction record.</span>
+					<?php } ?>
 				</div>
 			</div>
 		</section>
 	  </div>
   </div>
+  <?php 
+		$userid = $_SESSION['userid'];
+
+		// Prepare a statement
+		$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+		$stmt->bind_param("s", $userid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// Your data retrieval
+		
+  ?>
   <!-- /.content-wrapper -->
   <div class="modal center-modal fade" id="tron" tabindex="-1">
 	  <div class="modal-dialog">

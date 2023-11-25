@@ -157,7 +157,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                                 
                                 </div>
                             </div>
-                    <section class="container">
+                    <!-- <section class="container"> -->
 					<div class="row">
 					<div class="col-lg-4 col-12">
 					 <div class="box box-inverse ">
@@ -291,7 +291,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 			    </div>	
 			</div>
 			
-		</section>
+		<!-- </section> -->
                             
             </section>
 

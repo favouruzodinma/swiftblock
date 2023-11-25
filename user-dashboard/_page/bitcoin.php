@@ -64,11 +64,6 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 					</center>				
 				</div>
 				<div class="box-body">
-					<!-- <form action="#" class="dropzone">
-						<div class="fallback">
-							<input name="file" type="file" multiple />
-						</div>
-					</form> -->
 					<div class="mt-20 d-flex justify-content-around align-items-center">
 						<a href="#" class="btn btn-light"  data-toggle="modal" data-target="#bitcoin">RECEIVE
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -84,6 +79,7 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 				</div>
 			</div>
 		</section>
+		<?php }} ?>
 		<!-- /.content -->
 		<section class="content">
 		    <div class="box">
@@ -92,12 +88,66 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 					<p>Transaction History shows information about all BITCOIN Transactions.</p>			
 				</div>
 				<div class="box-body">
-					<span>No Transaction record.</span>
+					<?php 
+						$userid = $_SESSION['userid'];
+
+						// Prepare a statement
+						$stmt = $conn->prepare("SELECT * FROM history WHERE userid = ? AND coinType = ?");
+						$coinType = 'bitcoin'; // Set coinType as 'bitcoin'
+						$stmt->bind_param("ss", $userid, $coinType);
+						$stmt->execute();
+
+						$result = $stmt->get_result();
+
+						if ($result->num_rows > 0) {
+					?>
+					<table id="example5" class="table table-bordered table-striped" style="width:100%">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>AMOUNT</th>
+								<th>COIN NAME</th>
+								<th>DATE/TIME</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+								$num = 1;
+								while ($row = $result->fetch_assoc()) {
+							?>
+							<tr>
+								<td><?php echo $num++; ?></td>
+								<td><?php echo $row['updated_balance']; ?>BTC</td>
+								<td><?php echo $row['coinType']; ?></td>
+								<td><?php echo $row['updated_at']; ?></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+					<?php } else { ?>
+					<span class="text-danger">No Transaction record.</span>
+					<?php } ?>
 				</div>
+
 			</div>
 		</section>
 	  </div>
   </div>
+  <?php 
+		$userid = $_SESSION['userid'];
+
+		// Prepare a statement
+		$stmt = $conn->prepare("SELECT * FROM user_login WHERE userid = ?");
+		$stmt->bind_param("s", $userid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				// Your data retrieval
+		
+		?>
   <!-- /.content-wrapper -->
   <div class="modal center-modal fade" id="bitcoin" tabindex="-1">
 	  <div class="modal-dialog">
