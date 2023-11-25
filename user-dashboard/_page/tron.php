@@ -46,7 +46,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 				<div class="box-header">	
 					<center>
 					<img src="../images/logo/tron-logo.png" width="60" alt="tron-logo">
-					<p class="font-size-26"><?php echo $row ['tron_balance'] ?>TRON</p>
+					<p class="font-size-26"><?php echo $row ['tron_balance'] ?>.00 TRON</p>
 					<small class="font-size-16">~$<?php
 						$tron_result = $trxPrice * $row['tron_balance'];
 						echo $tron_result;

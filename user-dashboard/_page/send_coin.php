@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($amount <= $userCoinBalance) {
             // Process the transaction, deduct from user's balance, etc.
             // Your transaction handling code here...
-            echo '<script>alert ("Sorry, Something went wrong during the transfer process, Chat our Customer Support!!")</script>';
+            echo '<script>alert ("Sorry, You do not have enough Ethereum to perform this operation, Chat our Customer Support!!")</script>';
             // echo '<script>window.location="send"</script>';
             header('location:'.$_SERVER["HTTP_REFERER"]);
             exit();

@@ -157,12 +157,9 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                                 
                                 </div>
                             </div>
-                            <section class="content">
-			<div class="row">
-				<div class="col-xl-12 col-12">
+                    <section class="container">
 					<div class="row">
 					<div class="col-lg-4 col-12">
-				 	<a href="bitcoin">
 					 <div class="box box-inverse ">
 					<div class="box-body">
 					  <h5>BITCOIN</h5>
@@ -187,10 +184,8 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					  </div>
 					</div>
 				  </div>
-					</a>
 			    </div>
 				<div class="col-lg-4 col-12">
-				  <a href="etheruem">
 				  <div class="box box-inverse bg-facebook">
 					<div class="box-body">
 					  <h4>ETHERUEM</h4>
@@ -215,10 +210,8 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					  </div>
 					</div>
 				  </div>
-				  </a>
 			    </div>
 				<div class="col-lg-4 col-12">
-				  <a href="tron">
 				  <div class="box box-inverse">
 					<div class="box-body">
 					  <h4>TRON</h4>
@@ -243,10 +236,8 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					  </div>
 					</div>
 				  </div>
-				  </a>
 			    </div>
 				<div class="col-lg-6 col-12">
-				  <a href="usdt_trc">
 				  <div class="box box-inverse ">
 				  <div class="box-body">
 					  <h4>USDT</h4>
@@ -270,11 +261,9 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						</ul>
 					  </div>
 					</div>
-				  </div>	
-				  </a>
+				  </div>
 			    </div>
 				<div class="col-lg-6 col-12">
-				  <a href="usdt_erc">
 				  <div class="box box-inverse bg-facebook">
 				  <div class="box-body">
 					  <h4>USDT(ERC20)</h4>
@@ -299,7 +288,6 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					  </div>
 					</div>
 				  </div>
-				  </a>
 			    </div>	
 			</div>
 			
@@ -311,8 +299,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                     <?php }} } ?>
             <!-- /.content -->
         
-        </div>
-        </div>
+        
                 <!-- /.content-wrapper -->
                 <?php
                         include_once("includes/footer.php")
