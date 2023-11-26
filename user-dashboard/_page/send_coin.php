@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userid = $_POST['userid']; // Assuming you have the user's ID sent from the form
 
     // Fetch user's balance for the selected coin
-    $stmt = $conn->prepare("SELECT {$coinType}_balance FROM user_login WHERE userid = ?");
+    $stmt = $conn->prepare("SELECT `{$coinType}_balance` FROM user_login WHERE userid = ?");
     if ($stmt) {
         $stmt->bind_param("s", $userid);
         $stmt->execute();
