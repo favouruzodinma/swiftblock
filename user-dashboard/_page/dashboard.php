@@ -73,7 +73,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 								$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
 
 								$total_balance = $bitcoin_result + $ethereum_result + $tron_result + $tether_result + $usd_result;
-								echo $total_balance;
+								echo number_format($total_balance);
 								?>
 							</i>
 							</span>
@@ -124,7 +124,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <li class="list-inline-item ">
 						$<?php
 						$bitcoin_result = $bitcoinPrice * $row['bitcoin_balance'];
-						echo $bitcoin_result;
+						echo number_format($bitcoin_result);
 						?>  <br>
 						  <small class="font-size-16 "><?php echo $row ['bitcoin_balance'] ?> BTC</small>
 						  </li>
@@ -152,7 +152,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <li class="list-inline-item ">
 						$<?php
 						$ethereum_result = $ethereumPrice * $row['ethereum_balance'];
-						echo $ethereum_result;
+						echo number_format($ethereum_result);
 						?>   <br>
 						  <small class="font-size-16 "><?php echo $row ['ethereum_balance'] ?> ETH</small>
 						  </li>
@@ -172,7 +172,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<img src="../images/logo/tron-logo.png" width="50" alt="tron-logo">
 						<span class="ml-2">
 							<small class="font-size-26" id="autoload">$<?php echo $trxPrice; ?></small> <br>
-							<small >6.26%</small>
+							<small >1.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0">
@@ -180,7 +180,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <li class="list-inline-item ">
 						$<?php
 						$tron_result = $trxPrice * $row['tron_balance'];
-						echo $tron_result;
+						echo number_format($tron_result);
 						?>  <br>
 						  <small class="font-size-16 "><?php echo $row ['tron_balance'] ?> TRX</small>
 						  </li>
@@ -208,7 +208,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <li class="list-inline-item ">
 						  $<?php
 							$tether_result = $tetherPrice * $row['tether_balance'];
-							echo $tether_result;
+							echo number_format($tether_result);
 							?> <br>
 						  <small class="font-size-14 "><?php echo $row ['tether_balance'] ?> USDT <br>(TRC20)</small>
 						  </li>
@@ -236,7 +236,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						  <li class="list-inline-item ">
 						$<?php
 						$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
-						echo $usd_result;
+						echo number_format($usd_result);
 						?> <br>
 						  <small class="font-size-14 "><?php echo $row ['usd-coin_balance'] ?> USDT <br>(ERC20)</small>
 						  </li>

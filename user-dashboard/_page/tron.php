@@ -49,7 +49,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 					<p class="font-size-26"><?php echo $row ['tron_balance'] ?> TRON</p>
 					<small class="font-size-16">~$<?php
 						$tron_result = $trxPrice * $row['tron_balance'];
-						echo $tron_result;
+						echo number_format($tron_result);
 						?> </small>
 					</center>				
 				</div>
@@ -107,7 +107,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>BTC</td>
+								<td><?php echo $row['updated_balance']; ?>TRON</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>

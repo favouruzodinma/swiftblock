@@ -50,7 +50,7 @@ $tetherPrice = $prices['tether']['usd'] ?? $defaultPrices['tether'];
 					<p class="font-size-26"><?php echo $row ['tether_balance'] ?> USDT(TRC20)</p>
 					<small class="font-size-16">~$<?php
 							$tether_result = $tetherPrice * $row['tether_balance'];
-							echo $tether_result;
+							echo number_format($tether_result);
 							?></small>
 					</center>				
 				</div>
@@ -113,7 +113,7 @@ $tetherPrice = $prices['tether']['usd'] ?? $defaultPrices['tether'];
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>USDT(TRC20)</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>

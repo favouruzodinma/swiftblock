@@ -50,7 +50,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<p class="font-size-24"><?php echo $row ['usd-coin_balance'] ?> USDT(ERC20)</p>
 						<small class="font-size-16 ">~$<?php
 						$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
-						echo $usd_result;
+						echo number_format($usd_result);
 						?></small>
 					</center>					
 				</div>
@@ -113,7 +113,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>USDT(ERC20)</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>
@@ -128,6 +128,21 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 		</section>
 	  </div>
   </div>
+  <?php 
+	$userid = $_SESSION['userid'];
+
+	// Prepare a statement
+	$stmt = $conn->prepare("SELECT* FROM user_login WHERE userid = ?");
+	$stmt->bind_param("s", $userid);
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			// Your data retrieval
+	
+	?>
   <!-- /.content-wrapper -->
   <div class="modal center-modal fade" id="usdterc" tabindex="-1">
 	  <div class="modal-dialog">

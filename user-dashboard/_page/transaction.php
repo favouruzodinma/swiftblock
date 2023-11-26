@@ -68,7 +68,7 @@
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>BTC</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>
@@ -174,7 +174,7 @@
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>TRON</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>
@@ -227,7 +227,7 @@
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>USDT(TRC20)</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>
@@ -280,7 +280,7 @@
 							?>
 							<tr>
 								<td><?php echo $num++; ?></td>
-								<td><?php echo $row['updated_balance']; ?>ETH</td>
+								<td><?php echo $row['updated_balance']; ?>USDT(ERC20)</td>
 								<td><?php echo $row['coinType']; ?></td>
 								<td><?php echo $row['updated_at']; ?></td>
 							</tr>

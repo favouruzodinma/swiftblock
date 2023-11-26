@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group row">
                     <label for="value" class="col-sm-12 col-form-label">Enter amount in <?php echo $row ['coin_name'] ?> value</label>
                     <div class="col-sm-12">
-                     <input type="number" class="form-control" name="amount" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
+                     <input type="number" class="form-control"  name="amount" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
                     </div>
                     <span class="input-group-btn">
                         <p id="result" style="color:green"></p>
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="bitcoin">BITCOIN</option>
                         <option value="tron">TRON</option>
                         <option value="ethereum">ETHEREUM(ERC20)</option>
-                        <option value="BNB">BNB SMART CHAIN (BEP20)</option>
+                        <option value="bnb">BNB SMART CHAIN (BEP20)</option>
                     </select>
                     </div>
                 </div>

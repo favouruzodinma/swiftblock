@@ -59,7 +59,7 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 					<p class="font-size-26"><?php echo $row ['bitcoin_balance'] ?>BTC</p>
 					<small class="font-size-16">~$<?php
 						$bitcoin_result = $bitcoinPrice * $row['bitcoin_balance'];
-						echo $bitcoin_result;
+						echo number_format($bitcoin_result);
 						?> </small>
 					</center>				
 				</div>

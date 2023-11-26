@@ -60,7 +60,7 @@ $ethereumPrice = $prices['ethereum']['usd'] ?? $defaultPrices['ethereum'];
 					<p class="font-size-26"><?php echo $row ['ethereum_balance'] ?>ETH</p>
 					<small class="font-size-16">~$<?php
 						$ethereum_result = $ethereumPrice * $row['ethereum_balance'];
-						echo $ethereum_result;
+						echo number_format($ethereum_result);
 						?>  </small>
 					</center>				
 				</div>

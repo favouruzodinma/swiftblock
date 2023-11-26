@@ -125,25 +125,25 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                                             <div class="col-sm-12">
                                             <input type="hidden" value="<?php  echo $userid?>" name="userid">
                                             <!-- <input type="text" class="form-control" id="fullname"  value=""> -->
-                                            <select name="coin_name"  id="" class="form-control">
-                                                <option name="coin_name" value="bitcoin">BITCOIN</option>
-                                                <option name="coin_name" value="ethereum">ETHEREUM</option>
-                                                <option name="coin_name" value="tron">TRON</option>
-                                                <option name="coin_name" value="tether">USDT(TRC20)</option>
-                                                <option name="coin_name" value="usd-coin">USDT(ERC20)</option>
-                                            </select>
+                                            <select name="coin_name" id="" class="form-control">
+												<option value="bitcoin">BITCOIN</option>
+												<option value="ethereum">ETHEREUM</option>
+												<option value="tron">TRON</option>
+												<option value="tether">USDT(TRC20)</option>
+												<option value="usd-coin">USDT(ERC20)</option>
+											</select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="value" class="col-sm-12 col-form-label">Enter amount in (VALUE)</label>
                                             <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="" name="amount_value" value="" required>
+                                            <input type="text" class="form-control" id="" step="any" name="amount_value" value="" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="usd" class="col-sm-12 col-form-label">Enter amount in (USD)</label>
                                             <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="" name="amount_usd" value="" required>
+                                            <input type="text" class="form-control" id="" step="any" name="amount_usd" value="" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
