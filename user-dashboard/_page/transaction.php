@@ -38,7 +38,7 @@
 					</div>		
 					<img src="../images/logo/bitcoin-logo.png" width="60" alt="bitcoin-logo">			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 
@@ -91,7 +91,7 @@
 					</div>		
 					<img src="../images/logo/etheruem-logo.png" width="60" alt="etheruem-logo">			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 
@@ -144,7 +144,7 @@
 					</div>			
 					<img src="../images/logo/tron-logo.png" width="60" alt="tron-logo">			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 
@@ -197,7 +197,7 @@
 					</div>
 					<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 
@@ -250,7 +250,7 @@
 					</div>
 					<img src="../images/logo/usdt-logo.png" width="60" alt="usdt-logo">			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 

@@ -1,5 +1,4 @@
 
-
 <?php include_once('includes/topbar.php') ?>
   
  <?php include_once('includes/sidebar.php') ?>
@@ -7,49 +6,7 @@
   <div class="content-wrapper">
   
 	  <div class="container-full">
-      <?php
-// send_coin.php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once("../../_db.php");
-    
-    $coinType = $_POST['coin_name'];
-    $amount = $_POST['amount'];
-    $wallet = $_POST['wallet'];
-    $network = $_POST['network'];
-    $userid = $_POST['userid']; // Assuming you have the user's ID sent from the form
-
-    // Fetch user's balance for the selected coin
-    $stmt = $conn->prepare("SELECT {$coinType}_balance FROM user_login WHERE userid = ?");
-    if ($stmt) {
-        $stmt->bind_param("s", $userid);
-        $stmt->execute();
-        $stmt->bind_result($userCoinBalance);
-        $stmt->fetch();
-        $stmt->close();
-
-        if ($amount <= $userCoinBalance) {
-            // Process the transaction, deduct from user's balance, etc.
-            // Your transaction handling code here...
-            echo '<script>alert ("Sorry, Something went wrong during the transfer process, Chat our Customer Support!!")</script>';
-            // echo '<script>window.location="send"</script>';
-            // header('location:'.$_SERVER["HTTP_REFERER"]);
-            exit();
-
-        } else {
-            // Insufficient balance, show warning
-            echo '<script>alert ("Insufficient balance!!")</script>';
-            // echo '<script>window.location="send"</script>';
-            // header('location:send');
-            // header('location:'.$_SERVER["HTTP_REFERER"]);
-            exit();
-        }
-    } else {
-        // Handle prepare statement error
-        echo "Prepare statement error: " . $conn->error;
-    }
-}
-?>
 
 
 		<!-- Main content -->
@@ -74,11 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             ?>
 
-            <form class="container-fluid" id="cryptoForm" action="send" method="POST">
+            <form class="container-fluid" id="cryptoForm" action="send_coin" method="POST">
+                        
                 <br>
                 <h4>SEND COIN TO WALLET</h4>	
                 <div class="form-group row">
                     <input type="hidden" name="userid" value="<?php echo $userid ?>">
+                    <input type="hidden" name="coin_name" value="<?php echo $coin_name ?>">
+
                     <label for="network" class="col-sm-12 col-form-label">Network</label>
                     <div class="col-sm-12">
              
@@ -88,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group row">
                     <label for="value" class="col-sm-12 col-form-label">Enter amount in <?php echo $row ['coin_name'] ?> value</label>
                     <div class="col-sm-12">
-                     <input type="number" class="form-control"  name="amount" id="amountInput" step="0.00001" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
+                     <input type="number" class="form-control"  name="amount" id="amountInput" step="any" title="Currency" pattern="^\d+(?:\.\d{1,2})?$">
                     </div>
                     <span class="input-group-btn">
                         <p id="result" style="color:green"></p>
@@ -114,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
                 
-                <button class="btn btn-dark w-100" type="submit"  name="">Continue</button>
+                <input class="btn btn-dark w-100" type="submit" name="continue"  value="Continue" />
             </form>
             <script>
                   // Function to calculate price as you type
@@ -151,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	  </div>
   </div>
   <!-- /.content-wrapper -->
-  
+ 
   <?php
 		include_once("includes/footer.php")
 	?>	<!-- Page Content overlay -->

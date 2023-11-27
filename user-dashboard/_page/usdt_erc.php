@@ -83,7 +83,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 					<h4>TRANSACTIONS HISTORY</h4>
 					<p>Transaction History shows information about all USDT(ERC20) Transactions.</p>			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 

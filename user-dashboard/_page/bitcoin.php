@@ -87,7 +87,7 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 					<h4>TRANSACTIONS HISTORY</h4>
 					<p>Transaction History shows information about all BITCOIN Transactions.</p>			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 

@@ -30,10 +30,10 @@
                             <h4>Contact Info </h4>
                             <div class="contacts">
                                 <div>
-                                    <span>swiftblock97@gmail.com</span>
+                                    <span>swiftblock67@gmail.com</span>
                                 </div>
                                 <div>
-                                    <span>+4366565577629</span>
+                                    <span>+7(775)3797584</span>
                                 </div>
                                 <div>
                                     <span>Moscow, Russia</span>

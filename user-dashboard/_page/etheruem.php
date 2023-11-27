@@ -93,7 +93,7 @@ $ethereumPrice = $prices['ethereum']['usd'] ?? $defaultPrices['ethereum'];
 					<h4>TRANSACTIONS HISTORY</h4>
 					<p>Transaction History shows information about all ETHEREUM Transactions.</p>			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 

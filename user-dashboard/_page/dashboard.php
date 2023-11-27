@@ -115,18 +115,18 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/bitcoin-logo.png" width="50" alt="bitcoin-logo">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">$<?php echo $bitcoinPrice; ?></small> <br>
+							<small class="font-size-22" id="autoload">$<?php echo $bitcoinPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0" id="bitcoinAmountDisplay">
 						
-						  <li class="list-inline-item ">
+						  <li class="list-inline-item " style="position:relative; right:-14px">
 						$<?php
 						$bitcoin_result = $bitcoinPrice * $row['bitcoin_balance'];
 						echo number_format($bitcoin_result);
 						?>  <br>
-						  <small class="font-size-16 "><?php echo $row ['bitcoin_balance'] ?> BTC</small>
+						  <small class="font-size-12 "><?php echo $row ['bitcoin_balance'] ?> BTC</small>
 						  </li>
 						</ul>
 					  </div>
@@ -138,23 +138,23 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 				  <a href="etheruem">
 				  <div class="box box-inverse bg-facebook">
 					<div class="box-body">
-					  <h4>ETHERUEM</h4>
+					  <h4>ETHEREUM</h4>
 					  <div class="mt-20 d-flex justify-content-between">
 						<div class="d-flex">
 						<img src="../images/logo/etheruem-logo.png" width="50" height="60" alt="etheruem-logo">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload" >$<?php echo $ethereumPrice; ?></small> <br>
+							<small class="font-size-22" id="autoload" >$<?php echo $ethereumPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0">
 						
-						  <li class="list-inline-item ">
+						  <li class="list-inline-item " style="position:relative; right:-14px">
 						$<?php
 						$ethereum_result = $ethereumPrice * $row['ethereum_balance'];
 						echo number_format($ethereum_result);
 						?>   <br>
-						  <small class="font-size-16 "><?php echo $row ['ethereum_balance'] ?> ETH</small>
+						  <small class="font-size-12 "><?php echo $row ['ethereum_balance'] ?> ETH</small>
 						  </li>
 						</ul>
 					  </div>
@@ -171,18 +171,18 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/tron-logo.png" width="50" alt="tron-logo">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">$<?php echo $trxPrice; ?></small> <br>
+							<small class="font-size-22" id="autoload">$<?php echo $trxPrice; ?></small> <br>
 							<small >1.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0">
 						
-						  <li class="list-inline-item ">
+						  <li class="list-inline-item " style="position:relative; right:-14px">
 						$<?php
 						$tron_result = $trxPrice * $row['tron_balance'];
 						echo number_format($tron_result);
 						?>  <br>
-						  <small class="font-size-16 "><?php echo $row ['tron_balance'] ?> TRX</small>
+						  <small class="font-size-12 "><?php echo $row ['tron_balance'] ?> TRX</small>
 						  </li>
 						</ul>
 					  </div>
@@ -199,18 +199,18 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">$<?php echo $tetherPrice; ?></small> <br>
+							<small class="font-size-22" id="autoload">$<?php echo $tetherPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0">
 						
-						  <li class="list-inline-item ">
+						  <li class="list-inline-item " style="position:relative; right:-14px">
 						  $<?php
 							$tether_result = $tetherPrice * $row['tether_balance'];
 							echo number_format($tether_result);
 							?> <br>
-						  <small class="font-size-14 "><?php echo $row ['tether_balance'] ?> USDT <br>(TRC20)</small>
+						  <small class="font-size-12 "><?php echo $row ['tether_balance'] ?> USDT <br>(TRC20)</small>
 						  </li>
 						</ul>
 					  </div>
@@ -227,18 +227,18 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 						<div class="d-flex">
 						<img src="../images/logo/usdt-logo.png" width="50" alt="usdt-logo">
 						<span class="ml-2">
-							<small class="font-size-26" id="autoload">$<?php echo $usdCoinPrice; ?></small> <br>
+							<small class="font-size-22" id="autoload">$<?php echo $usdCoinPrice; ?></small> <br>
 							<small >6.26%</small>
 						</span>
 						</div>
 						<ul class="list-inline float-right mb-0">
 						
-						  <li class="list-inline-item ">
+						  <li class="list-inline-item " style="position:relative; right:-14px">
 						$<?php
 						$usd_result = $usdCoinPrice * $row['usd-coin_balance'];
 						echo number_format($usd_result);
 						?> <br>
-						  <small class="font-size-14 "><?php echo $row ['usd-coin_balance'] ?> USDT <br>(ERC20)</small>
+						  <small class="font-size-12 "><?php echo $row ['usd-coin_balance'] ?> USDT <br>(ERC20)</small>
 						  </li>
 						</ul>
 					  </div>

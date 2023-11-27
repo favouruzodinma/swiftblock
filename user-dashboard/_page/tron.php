@@ -77,7 +77,7 @@ $trxPrice = $prices['trx']['usd'] ?? $defaultPrices['trx'];
 					<h4>TRANSACTIONS HISTORY</h4>
 					<p>Transaction History shows information about all TRON Transactions.</p>			
 				</div>
-				<div class="box-body">
+				<div class="box-body" style="overflow-x:auto">
 					<?php 
 						$userid = $_SESSION['userid'];
 

@@ -1,6 +1,5 @@
 <?php
 // send_coin.php
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once("../../_db.php");
     
@@ -22,19 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($amount <= $userCoinBalance) {
             // Process the transaction, deduct from user's balance, etc.
             // Your transaction handling code here...
-            echo '<script>alert ("Sorry, You do not have enough Ethereum to perform this operation, Chat our Customer Support!!")</script>';
-            // echo '<script>window.location="send"</script>';
-            header('location:'.$_SERVER["HTTP_REFERER"]);
-            exit();
+
+            header("location:error?status=$coinType&userid=$userid");
+            // exit();
 
         } else {
             // Insufficient balance, show warning
-            echo '<script>alert ("Insufficient balance!!")</script>';
-            // echo '<script>window.location="send"</script>';
-            // header('location:send');
-            header('location:'.$_SERVER["HTTP_REFERER"]);
+            header("location:insufficient?status=$coinType&userid=$userid");
 
-            exit();
+            // exit();
         }
     } else {
         // Handle prepare statement error
