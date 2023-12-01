@@ -197,7 +197,7 @@ if (isset($_POST['login'])) {
 						<form action="login" method="POST">
 							<!-- error message validation  -->
 							<?php if (isset($error)) : ?>
-								<div class="alert alert-danger"><?php echo $error; ?></div>
+								<div><?php echo $error; ?></div>
 							<?php endif; ?>
 							<!-- end of error message  -->
 							<!-- Input Field Starts -->

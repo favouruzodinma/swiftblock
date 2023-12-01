@@ -59,6 +59,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 	  <div class="col-lg-12 col-12">
 				  <div class="box box-inverse ">
 					<div class="box-body">
+						
 						<div class="d-flex justify-content-between">
 							<span>
 							<h4>Total Balance</h4>

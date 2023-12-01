@@ -124,6 +124,8 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
                                             <label for="network" class="col-sm-12 col-form-label">Network</label>
                                             <div class="col-sm-12">
                                             <input type="hidden" value="<?php  echo $userid?>" name="userid">
+                                            <input type="hidden" value="<?php  echo $row ['email']?>" name="email">
+                                            <input type="hidden" value="<?php  echo $row ['flname']?>" name="flname">
                                             <!-- <input type="text" class="form-control" id="fullname"  value=""> -->
                                             <select name="coin_name" id="" class="form-control">
 												<option value="bitcoin">BITCOIN</option>
