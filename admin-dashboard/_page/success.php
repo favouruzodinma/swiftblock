@@ -44,7 +44,7 @@
                 </center>
                 <br>
                 <br>
-                <strong class="text-danger font-size-20 text-center"><?php echo $row ['flname'] ?> balance updated successfully!!</strong> 
+                <strong class="font-size-20 text-center"><?php echo $row ['flname'] ?> balance updated successfully!!</strong> 
                 <center>
                     <a href="view?userid=<?php echo $userid; ?>" style="position:relative; bottom:-50px">back to view user page</a>
                 </center>
