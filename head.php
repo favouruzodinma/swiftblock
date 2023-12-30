@@ -17,7 +17,25 @@
     <link rel="alternate stylesheet" type="text/css" title="green" href="css/skins/green.css" />
     <link rel="alternate stylesheet" type="text/css" title="blue" href="css/skins/blue.css" />
     <link rel="stylesheet" type="text/css" href="css/styleswitcher.css" />
-
+    
     <!-- Template JS Files -->
     <script src="js/modernizr.js"></script>
     <title>SwiftBlock</title>
+    <style>
+    .whatsapp-icon {
+    position: fixed;
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
+    left: 20px; /* Adjust the distance from the left as needed */
+    z-index: 9999;
+    }
+    /* img{
+    background: url('whatsapp-icon.png');
+    } */
+    .whatsapp-icon svg {
+    width: 60px; /* Adjust the size of the icon as needed */
+    height: auto;
+    border-radius: 50%; /* Make the icon circular */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    }
+
+    </style>

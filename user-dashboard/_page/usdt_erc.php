@@ -164,7 +164,7 @@ $usdCoinPrice = $prices['usd-coin']['usd'] ?? $defaultPrices['usd-coin'];
 			<div style="border:1px solid black">
 				<p style="border-bottom:1px solid black">
 					<h6>Network</h6>
-					<p>TRC20</p>
+					<p>ERC20</p>
 				</p>
 				<p style="border-bottom:1px solid black">
 					<h6>Expected arrival</h6>

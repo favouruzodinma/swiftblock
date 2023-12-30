@@ -35,11 +35,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fundwallet'])) {
                 // Email notification to the user
                 $to = $email;
                 $subject = 'Funds Added to Your Wallet';
-                $message = "Hello $flname,\n\n Your swiftblock $coinType wallet has funded with $amountValue $coinType.\n\nThank you!";
-                $headers = "From: swiftblock.org";
 
-                // Send email using mail() function
-                if (mail($to, $subject, $message, $headers)) {
+                $message = "<html>
+                <head>
+                <style>
+                    /* Add your CSS styles here */
+                    .container {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    padding: 20px;
+                    border-radius: 5px;
+                    }
+                    /* Define other styles as needed */
+                </style>
+                </head>
+                <body>
+                <div class='container'>
+                    <center>
+                    <img src='https://www.swiftblock.org/logo2.png' alt='logo' />
+                    </center>
+                    <h3>Hello $flname..</h3>
+                    <p><i>Your swiftblock $coinType wallet was funded with $amountValue $coinType.</i></p>
+                    <p>Thank you!</p>
+                </div>
+                </body>
+                </html>";
+
+                $headers = "MIME-Version: 1.0\r\n";
+                $headers .= "Content-type: text/html; charset=utf-8\r\n";
+                $headers .= "From: swiftblock.org\r\n";
+
+                // Send the email
+                if(mail($to, $subject, $message, $headers)) {
 
                     header("location:success?userid=$userid");
 

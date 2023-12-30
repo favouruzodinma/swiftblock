@@ -170,7 +170,7 @@ $bitcoinPrice = $prices['bitcoin']['usd'] ?? $defaultPrices['bitcoin'];
 			<div style="border:1px solid black">
 				<p style="border-bottom:1px solid black">
 					<h6>Network</h6>
-					<p>TRC20</p>
+					<p>BTC</p>
 				</p>
 				<p style="border-bottom:1px solid black">
 					<h6>Expected arrival</h6>

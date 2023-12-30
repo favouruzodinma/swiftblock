@@ -24,7 +24,24 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/skin_color.css">
-     
+  <style>
+  .whatsapp-icon {
+  position: fixed;
+  bottom: 50px; /* Adjust the distance from the bottom as needed */
+  left: 20px; /* Adjust the distance from the left as needed */
+  z-index: 9999;
+}
+/* img{
+  background: url('whatsapp-icon.png');
+} */
+.whatsapp-icon svg {
+  width: 60px; /* Adjust the size of the icon as needed */
+  height: auto;
+  border-radius: 50%; /* Make the icon circular */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+</style>
   </head>
   <body class="hold-transition light-skin sidebar-mini theme-primary">
 	
